@@ -80,6 +80,15 @@ class Operator: public Component
         {
             this->value = value->getValue();
         }
+        Operator(std::shared_ptr<Symbol> value1, std::shared_ptr<Symbol> value2)
+        {
+            this->value = value1->getValue() + value2->getValue();
+        }
+
+        Operator(std::shared_ptr<Symbol> value1, std::shared_ptr<Symbol> value2, std::shared_ptr<Symbol> value3)
+        {
+            this->value = value1->getValue() + value2->getValue() + value3->getValue();
+        }
         virtual ~Operator() = default;
         virtual std::string getOperatorTypeAsString(OperatorType type){
             switch (type)
