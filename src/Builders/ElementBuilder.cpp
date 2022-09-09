@@ -53,6 +53,10 @@ void ElementBuilder::read_str(std::string input)
     tokenizer.tokenize();
     std::vector<std::shared_ptr<Character>>tokens = tokenizer.getTokens(); 
     std::cout << "Number of tokens(characters) found: " << tokens.size() << "\n"; 
+    for(std::shared_ptr<Character> token: tokens)
+    {
+        std::cout << token->inspect() << "\n"; 
+    }
     ComponentBuilder componentBuilder = ComponentBuilder(tokens);  
     componentBuilder.build_components();
     std::vector<std::shared_ptr<Component>>components = componentBuilder.getComponents(); 

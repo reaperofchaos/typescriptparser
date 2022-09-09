@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <cassert>
-
+#include "Component.h"
 enum class ElementType
 {
     Element,

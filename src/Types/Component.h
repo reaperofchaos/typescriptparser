@@ -34,6 +34,7 @@ class AndComponent;
 
 enum class ComponentType
 {
+    Operator,
     Name, 
     StringType,
     ArrayType,
@@ -104,6 +105,8 @@ class Component
                     return "Close Parenthesis";
                 case ComponentType::OpenParenthesisComponent:
                     return "Close Parenthesis";
+                case ComponentType::Operator:
+                    return "Operator";
                 default: 
                     return "Unknown";
             }

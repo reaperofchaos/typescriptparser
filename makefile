@@ -37,6 +37,8 @@ $(OBJDIR)/Tokenizer.o \
 $(OBJDIR)/TokenHandlers.o \
 $(OBJDIR)/Symbol.o \
 $(OBJDIR)/Component.o \
+$(OBJDIR)/Operator.o \
+$(OBJDIR)/AssignmentOperator.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
@@ -46,8 +48,6 @@ $(OBJDIR)/Element.o \
 $(OBJDIR)/ComponentUtilities.o \
 $(OBJDIR)/CharacterUtilities.o \
 $(OBJDIR)/TokenizerUtilities.o \
-$(OBJDIR)/Writer.o \
-$(OBJDIR)/Node.o
 
 OBJS=$(OBJDIR)/main.o\
 $(OBJDIR)/CharType.o \
@@ -56,6 +56,8 @@ $(OBJDIR)/Tokenizer.o \
 $(OBJDIR)/TokenHandlers.o \
 $(OBJDIR)/Symbol.o \
 $(OBJDIR)/Component.o \
+$(OBJDIR)/Operator.o \
+$(OBJDIR)/AssignmentOperator.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
@@ -64,9 +66,7 @@ $(OBJDIR)/ElementBuilder.o \
 $(OBJDIR)/Element.o \
 $(OBJDIR)/ComponentUtilities.o \
 $(OBJDIR)/CharacterUtilities.o \
-$(OBJDIR)/TokenizerUtilities.o \
-$(OBJDIR)/Writer.o \
-$(OBJDIR)/Node.o
+$(OBJDIR)/TokenizerUtilities.o 
 
 LIBOBJS=$(OBJDIR)/LCharType.o \
 $(OBJDIR)/LComponentBuilder.o \
@@ -74,6 +74,8 @@ $(OBJDIR)/LTokenizer.o \
 $(OBJDIR)/LTokenHandlers.o \
 $(OBJDIR)/LSymbol.o \
 $(OBJDIR)/LComponent.o \
+$(OBJDIR)/LOperator.o \
+$(OBJDIR)/LAssignmentOperator.o \
 $(OBJDIR)/LPrimitive.o \
 $(OBJDIR)/LPropHandlers.o \
 $(OBJDIR)/LPrimitiveHandlers.o \
@@ -84,9 +86,7 @@ $(OBJDIR)/LElement.o \
 $(OBJDIR)/LProp.o \
 $(OBJDIR)/LComponentUtilities.o \
 $(OBJDIR)/LCharacterUtilities.o \
-$(OBJDIR)/LTokenizerUtilities.o \
-$(OBJDIR)/LWriter.o \
-$(OBJDIR)/LNode.o
+$(OBJDIR)/LTokenizerUtilities.o 
 
 
 all: $(OBJS)
@@ -138,18 +138,18 @@ $(OBJDIR)/Component.o:
 $(OBJDIR)/TokenHandlers.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/TokenHandlers.cpp -o $(OBJDIR)/TokenHandlers.o
 
+$(OBJDIR)/Operator.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Operators/Operator.cpp -o $(OBJDIR)/Operator.o
+
+$(OBJDIR)/AssignmentOperator.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Operators/AssignmentOperator.cpp -o $(OBJDIR)/AssignmentOperator.o
+
 $(OBJDIR)/Symbol.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/Symbol.o
 
 
 $(OBJDIR)/CharType.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/CharType.cpp -o $(OBJDIR)/CharType.o
-
-$(OBJDIR)/Writer.o:
-	$(CC) -c $(CCFLAGS) $(SRCDIR)/Writer.cpp -o $(OBJDIR)/Writer.o
-
-$(OBJDIR)/Node.o:
-	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Node.cpp -o $(OBJDIR)/Node.o
 
 $(OBJDIR)/ComponentBuilder.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Builders/ComponentBuilder.cpp -o $(OBJDIR)/ComponentBuilder.o
@@ -201,18 +201,18 @@ $(OBJDIR)/LComponent.o:
 $(OBJDIR)/LTokenHandlers.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/TokenHandlers.cpp -o $(OBJDIR)/LTokenHandlers.o
 
+$(OBJDIR)/LOperator.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Operators/Operator.cpp -o $(OBJDIR)/LOperator.o
+
+$(OBJDIR)/LAssignmentOperator.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Operators/AssignmentOperator.cpp -o $(OBJDIR)/LAssignmentOperator.o
+
 $(OBJDIR)/LSymbol.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/LSymbol.o
 
 
 $(OBJDIR)/LCharType.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/CharType.cpp -o $(OBJDIR)/LCharType.o
-
-$(OBJDIR)/LWriter.o:
-	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Writer.cpp -o $(OBJDIR)/LWriter.o
-
-$(OBJDIR)/LNode.o:
-	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Node.cpp -o $(OBJDIR)/LNode.o
 
 $(OBJDIR)/LComponentBuilder.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/ComponentBuilder.cpp -o $(OBJDIR)/LComponentBuilder.o
