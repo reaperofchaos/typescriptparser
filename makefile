@@ -39,6 +39,7 @@ $(OBJDIR)/Symbol.o \
 $(OBJDIR)/Component.o \
 $(OBJDIR)/Operator.o \
 $(OBJDIR)/AssignmentOperator.o \
+$(OBJDIR)/ArithmeticOperator.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
@@ -58,6 +59,7 @@ $(OBJDIR)/Symbol.o \
 $(OBJDIR)/Component.o \
 $(OBJDIR)/Operator.o \
 $(OBJDIR)/AssignmentOperator.o \
+$(OBJDIR)/ArithmeticOperator.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
@@ -76,6 +78,7 @@ $(OBJDIR)/LSymbol.o \
 $(OBJDIR)/LComponent.o \
 $(OBJDIR)/LOperator.o \
 $(OBJDIR)/LAssignmentOperator.o \
+$(OBJDIR)/LArithmeticOperator.o \
 $(OBJDIR)/LPrimitive.o \
 $(OBJDIR)/LPropHandlers.o \
 $(OBJDIR)/LPrimitiveHandlers.o \
@@ -144,6 +147,9 @@ $(OBJDIR)/Operator.o:
 $(OBJDIR)/AssignmentOperator.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Operators/AssignmentOperator.cpp -o $(OBJDIR)/AssignmentOperator.o
 
+$(OBJDIR)/ArithmeticOperator.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Operators/ArithmeticOperator.cpp -o $(OBJDIR)/ArithmeticOperator.o
+
 $(OBJDIR)/Symbol.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/Symbol.o
 
@@ -206,6 +212,9 @@ $(OBJDIR)/LOperator.o:
 
 $(OBJDIR)/LAssignmentOperator.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Operators/AssignmentOperator.cpp -o $(OBJDIR)/LAssignmentOperator.o
+
+$(OBJDIR)/LArithmeticOperator.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Operators/ArithmeticOperator.cpp -o $(OBJDIR)/LArithmeticOperator.o
 
 $(OBJDIR)/LSymbol.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/LSymbol.o

@@ -55,6 +55,7 @@ class AssignmentOperator: public Operator{
                     return "Unknown"; 
             }
         }
+        virtual OperatorType operatorType(){return OperatorType::AssignmentOperator;}
         virtual AssignmentOperatorType assignmentOperatorType(){ return AssignmentOperatorType::Unknown;}
         virtual std::string getValue(){ return value;}
         virtual std::string getType(){return this->getAssignmentOperatorTypeAsString(this->assignmentOperatorType());}
