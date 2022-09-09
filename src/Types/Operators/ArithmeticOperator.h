@@ -48,7 +48,7 @@ class ArithmeticOperator: public Operator{
                 case ArithmeticOperatorType::DecrementOperator:
                     return "Decrement Operator";
                 default: 
-                    return "Unknown"; 
+                    return "Not an arithmetic operator"; 
             }
         }
         virtual OperatorType operatorType(){return OperatorType::ArithmeticOperator;}

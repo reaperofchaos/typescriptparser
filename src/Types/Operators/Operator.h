@@ -104,7 +104,7 @@ class Operator: public Component
                 case OperatorType::BitwiseOperator:
                     return "Bitwise Operator";
                 default: 
-                    return "Unknown Operator";
+                    return "Not an operator";
             }
         }
         virtual ComponentType type(){ return ComponentType::Operator;}

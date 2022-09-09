@@ -13,7 +13,7 @@ class OpenBracket;
 class CloseBracket;
 class ArrayOpenBracket;
 class ArrayCloseBracket;
-class ObjectOpenBracket;
+class LeftCurlyBracket;
 class ObjectCloseBracket;
 class Exclamation;
 class Dash;
@@ -26,10 +26,10 @@ class Underscore;
 class Semicolon;
 class Percentage;
 class HashTag;
-class OpenParenthesis;
-class CloseParenthesis;
+class LeftParenthesis;
+class RightParenthesis;
 class AndSymbol;
-class TemplateLiteralSymbol;
+class GraveAccent;
 class PeriodSymbol;
 class CaratSymbol;
 class AsteriskSymbol;
@@ -67,18 +67,18 @@ class Symbol: public Character{
                     return "Comma";
                 case SymbolType::Semicolon:
                     return "Semicolon";
-                case SymbolType::OpenBracket:
-                    return "Open Bracket";
-                case SymbolType::CloseBracket:
-                    return "Close Bracket"; 
-                case SymbolType::ObjectOpenBracket:
-                    return "Object Open Bracket"; 
-                case SymbolType::ObjectCloseBracket:
-                    return "Object Close Bracket"; 
-                case SymbolType::ArrayOpenBracket:
-                    return "Array Open Bracket"; 
-                case SymbolType::ArrayCloseBracket:
-                    return "Array Close Bracket"; 
+                case SymbolType::GreaterThanSymbol:
+                    return "Greater Than";
+                case SymbolType::LessThanSymbol:
+                    return "Less Than"; 
+                case SymbolType::LeftCurlyBracket:
+                    return "Left Curly Bracket"; 
+                case SymbolType::RightCurlyBracket:
+                    return "Right Curly Bracket"; 
+                case SymbolType::LeftSquareBracket:
+                    return "Left Square Bracket"; 
+                case SymbolType::RightSquareBracket:
+                    return "Right Square Bracket"; 
                 case SymbolType::Exclamation:
                     return "Exclamation";
                 case SymbolType::Dash:
@@ -87,8 +87,6 @@ class Symbol: public Character{
                     return "Question Mark"; 
                 case SymbolType::ForwardSlash:
                     return "Forward Slash"; 
-                case SymbolType::ClosingCloseTag:
-                    return "Closing close tag";
                 case SymbolType::EqualSymbol:
                     return "Equal symbol";
                 case SymbolType::Underscore:
@@ -97,14 +95,14 @@ class Symbol: public Character{
                     return "Percentage";
                 case SymbolType::HashTag:
                     return "Hash Tag";
-                case SymbolType::OpenParenthesis:
-                    return "Open Parenthesis";
-                case SymbolType::CloseParenthesis:
-                    return "Close Parenthesis";
+                case SymbolType::LeftParenthesis:
+                    return "Left Parenthesis";
+                case SymbolType::RightParenthesis:
+                    return "Right Parenthesis";
                 case SymbolType::AndSymbol:
                     return "And Symbol"; 
-                case SymbolType::TemplateLiteralSymbol:
-                    return "Template Literal symbol";
+                case SymbolType::GraveAccent:
+                    return "Grave Accent";
                 case SymbolType::PeriodSymbol:
                     return "Period Symbol";
                 case SymbolType::CaratSymbol:
@@ -143,91 +141,91 @@ class Quote: public Symbol{
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
 };
 
-class ObjectOpenBracket: public Symbol{
+class LeftCurlyBracket: public Symbol{
     private:
         std::string value;
 
     public:
-        ObjectOpenBracket(std::string value): Symbol(value){
+        LeftCurlyBracket(std::string value): Symbol(value){
             this->value = value; 
         }
 
-        virtual SymbolType symbolType(){ return SymbolType::ObjectOpenBracket;}
+        virtual SymbolType symbolType(){ return SymbolType::LeftCurlyBracket;}
         std::string getValue(){ return value;}
         virtual std::string getType(){return this->getSymbolTypeAsString(this->symbolType());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
 
 };
-class ObjectCloseBracket: public Symbol{
+class RightCurlyBracket: public Symbol{
     private:
         std::string value;
 
     public:
-        ObjectCloseBracket(std::string value): Symbol(value){
+        RightCurlyBracket(std::string value): Symbol(value){
             this->value = value;
         }
 
-        virtual SymbolType symbolType(){ return SymbolType::ObjectCloseBracket;}
+        virtual SymbolType symbolType(){ return SymbolType::RightCurlyBracket;}
         std::string getValue(){ return value;}
         virtual std::string getType(){return this->getSymbolTypeAsString(this->symbolType());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
 
 };
-class ArrayOpenBracket: public Symbol{
+class LeftSquareBracket: public Symbol{
     private:
         std::string value;
 
     public:
-        ArrayOpenBracket(std::string value): Symbol(value){
+        LeftSquareBracket(std::string value): Symbol(value){
             this->value = value; 
         }
 
-        virtual SymbolType symbolType(){ return SymbolType::ArrayOpenBracket;}
+        virtual SymbolType symbolType(){ return SymbolType::LeftSquareBracket;}
         std::string getValue(){ return value;}
         virtual std::string getType(){return this->getSymbolTypeAsString(this->symbolType());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
 };
 
-class ArrayCloseBracket: public Symbol{
+class RightSquareBracket: public Symbol{
     private:
         std::string value;
 
     public:
-        ArrayCloseBracket(std::string value): Symbol(value){
+        RightSquareBracket(std::string value): Symbol(value){
             this->value = value;
         }
 
-        virtual SymbolType symbolType(){ return SymbolType::ArrayCloseBracket;}
+        virtual SymbolType symbolType(){ return SymbolType::RightSquareBracket;}
         std::string getValue(){ return value;}
         virtual std::string getType(){return this->getSymbolTypeAsString(this->symbolType());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
 };
 
-class OpenBracket: public Symbol{
+class LessThanSymbol: public Symbol{
     private:
         std::string value;
 
     public:
-        OpenBracket(std::string value): Symbol(value){
+        LessThanSymbol(std::string value): Symbol(value){
             this->value = value;
         }
 
-        virtual SymbolType symbolType(){ return SymbolType::OpenBracket;}
+        virtual SymbolType symbolType(){ return SymbolType::LessThanSymbol;}
         std::string getValue(){ return value;}
         virtual std::string getType(){return this->getSymbolTypeAsString(this->symbolType());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
 };
 
-class CloseBracket: public Symbol{
+class GreaterThanSymbol: public Symbol{
     private:
         std::string value;
 
     public:
-        CloseBracket(std::string value): Symbol(value){
+        GreaterThanSymbol(std::string value): Symbol(value){
             this->value = value; 
         }
 
-        virtual SymbolType symbolType(){ return SymbolType::CloseBracket;}
+        virtual SymbolType symbolType(){ return SymbolType::GreaterThanSymbol;}
         std::string getValue(){ return value;}
         virtual std::string getType(){return this->getSymbolTypeAsString(this->symbolType());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
@@ -435,29 +433,29 @@ class Underscore: public Symbol{
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
 };
 
-class OpenParenthesis: public Symbol{
+class LeftParenthesis: public Symbol{
     private:
         std::string value;
 
     public:
-        OpenParenthesis(std::string value): Symbol(value){
+        LeftParenthesis(std::string value): Symbol(value){
             this->value = value;
         }
-        virtual SymbolType symbolType(){ return SymbolType::OpenParenthesis;}
+        virtual SymbolType symbolType(){ return SymbolType::LeftParenthesis;}
         virtual std::string getValue(){ return value;}
         virtual std::string getType(){return this->getSymbolTypeAsString(this->symbolType());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
 };
 
-class CloseParenthesis: public Symbol{
+class RightParenthesis: public Symbol{
     private:
         std::string value;
 
     public:
-        CloseParenthesis(std::string value): Symbol(value){
+        RightParenthesis(std::string value): Symbol(value){
             this->value = value;
         }
-        virtual SymbolType symbolType(){ return SymbolType::CloseParenthesis;}
+        virtual SymbolType symbolType(){ return SymbolType::RightParenthesis;}
         virtual std::string getValue(){ return value;}
         virtual std::string getType(){return this->getSymbolTypeAsString(this->symbolType());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
@@ -477,15 +475,15 @@ class AndSymbol: public Symbol{
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
 };
 
-class TemplateLiteralSymbol: public Symbol{
+class GraveAccent: public Symbol{
     private:
         std::string value;
 
     public:
-        TemplateLiteralSymbol(std::string value): Symbol(value){
+        GraveAccent(std::string value): Symbol(value){
             this->value = value;
         }
-        virtual SymbolType symbolType(){ return SymbolType::TemplateLiteralSymbol;}
+        virtual SymbolType symbolType(){ return SymbolType::GraveAccent;}
         virtual std::string getValue(){ return value;}
         virtual std::string getType(){return this->getSymbolTypeAsString(this->symbolType());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}

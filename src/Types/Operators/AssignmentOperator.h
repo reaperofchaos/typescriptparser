@@ -52,7 +52,7 @@ class AssignmentOperator: public Operator{
                 case AssignmentOperatorType::ExponentAssignmentOperator:
                     return "Exponent Assignment Operator";
                 default: 
-                    return "Unknown"; 
+                    return "Not an assignment operator"; 
             }
         }
         virtual OperatorType operatorType(){return OperatorType::AssignmentOperator;}

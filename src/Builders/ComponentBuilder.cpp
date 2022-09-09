@@ -33,7 +33,7 @@ std::shared_ptr<Component>ComponentBuilder::next(){
     if(
         m_index > 0 &&
         m_index < m_tokens.size() &&
-        (m_tokens[m_index -1]->symbolType() == SymbolType::CloseBracket ||
+        (m_tokens[m_index -1]->symbolType() == SymbolType::GreaterThanSymbol ||
         m_tokens[m_index -1]->symbolType() == SymbolType::Dash) &&
         m_tokens[m_index]->type() != CharacterType::Symbol && 
         m_tokens[m_index]->type() != CharacterType::WhiteSpace) 
@@ -62,9 +62,9 @@ std::shared_ptr<Component>ComponentBuilder::next(){
                         case CharacterType::Symbol:
                             switch(m_tokens[m_index]->symbolType())
                             {
-                                case SymbolType::ArrayCloseBracket:
+                                case SymbolType::RightSquareBracket:
                                     return TokenHandlers::buildCloseArray(m_tokens, m_index, start);
-                                case SymbolType::ObjectCloseBracket:
+                                case SymbolType::RightCurlyBracket:
                                     return TokenHandlers::buildCloseObject(m_tokens, m_index, start);
                                 default:
                                     return TokenHandlers::buildWhiteSpaces(whiteSpaces);
@@ -83,10 +83,10 @@ std::shared_ptr<Component>ComponentBuilder::next(){
             case CharacterType::Symbol:
                 switch(m_tokens[m_index]->symbolType())
                 {
-                    case SymbolType::ArrayOpenBracket: //build the start of an array 
+                    case SymbolType::LeftSquareBracket: //build the start of an array 
                         return TokenHandlers::buildOpenArray(m_tokens, m_index, start);
                     
-                    case SymbolType::ObjectOpenBracket: //build the start of an object
+                    case SymbolType::LeftCurlyBracket: //build the start of an object
                         return TokenHandlers::buildOpenObject(m_tokens, m_index, start);
 
                     case SymbolType::SingleQuote: //build the string
@@ -95,10 +95,10 @@ std::shared_ptr<Component>ComponentBuilder::next(){
                     case SymbolType::Quote: //build the string
                         return TokenHandlers::buildString(m_tokens, m_index, characters, SymbolType::Quote);
                         
-                    case SymbolType::ArrayCloseBracket:
+                    case SymbolType::RightSquareBracket:
                         return TokenHandlers::buildCloseArray(m_tokens, m_index, start);
 
-                    case SymbolType::ObjectCloseBracket:
+                    case SymbolType::RightCurlyBracket:
                         return TokenHandlers::buildCloseObject(m_tokens, m_index, start);
 
                     case SymbolType::Exclamation:
@@ -116,10 +116,10 @@ std::shared_ptr<Component>ComponentBuilder::next(){
                     case SymbolType::HashTag:
                         return TokenHandlers::buildHashTag(m_tokens, m_index, start);
                     
-                    case SymbolType::OpenParenthesis:
+                    case SymbolType::LeftParenthesis:
                         return TokenHandlers::buildOpenParenthesis(m_tokens, m_index, start);
                     
-                    case SymbolType::CloseParenthesis:
+                    case SymbolType::RightParenthesis:
                         return TokenHandlers::buildCloseParenthesis(m_tokens, m_index, start);
                     
                     case SymbolType::Semicolon:

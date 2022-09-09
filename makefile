@@ -40,6 +40,7 @@ $(OBJDIR)/Component.o \
 $(OBJDIR)/Operator.o \
 $(OBJDIR)/AssignmentOperator.o \
 $(OBJDIR)/ArithmeticOperator.o \
+$(OBJDIR)/ComparisonOperator.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
@@ -60,6 +61,7 @@ $(OBJDIR)/Component.o \
 $(OBJDIR)/Operator.o \
 $(OBJDIR)/AssignmentOperator.o \
 $(OBJDIR)/ArithmeticOperator.o \
+$(OBJDIR)/ComparisonOperator.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
@@ -79,6 +81,7 @@ $(OBJDIR)/LComponent.o \
 $(OBJDIR)/LOperator.o \
 $(OBJDIR)/LAssignmentOperator.o \
 $(OBJDIR)/LArithmeticOperator.o \
+$(OBJDIR)/LComparisonOperator.o \
 $(OBJDIR)/LPrimitive.o \
 $(OBJDIR)/LPropHandlers.o \
 $(OBJDIR)/LPrimitiveHandlers.o \
@@ -150,6 +153,9 @@ $(OBJDIR)/AssignmentOperator.o:
 $(OBJDIR)/ArithmeticOperator.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Operators/ArithmeticOperator.cpp -o $(OBJDIR)/ArithmeticOperator.o
 
+$(OBJDIR)/ComparisonOperator.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Operators/ComparisonOperator.cpp -o $(OBJDIR)/ComparisonOperator.o
+
 $(OBJDIR)/Symbol.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/Symbol.o
 
@@ -215,6 +221,9 @@ $(OBJDIR)/LAssignmentOperator.o:
 
 $(OBJDIR)/LArithmeticOperator.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Operators/ArithmeticOperator.cpp -o $(OBJDIR)/LArithmeticOperator.o
+
+$(OBJDIR)/LComparisonOperator.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Operators/ComparisonOperator.cpp -o $(OBJDIR)/LComparisonOperator.o
 
 $(OBJDIR)/LSymbol.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/LSymbol.o

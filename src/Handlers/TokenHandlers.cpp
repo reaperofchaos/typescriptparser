@@ -36,7 +36,7 @@ std::shared_ptr<CloseArray> TokenHandlers::buildCloseArray(
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
 
-    return std::make_shared<CloseArray>(std::dynamic_pointer_cast<ArrayCloseBracket>(m_tokens[start]));
+    return std::make_shared<CloseArray>(std::dynamic_pointer_cast<RightSquareBracket>(m_tokens[start]));
     
 }
 
@@ -57,7 +57,7 @@ std::shared_ptr<CloseObject> TokenHandlers::buildCloseObject(
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
     CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
 
-    return std::make_shared<CloseObject>(std::dynamic_pointer_cast<ObjectCloseBracket>(m_tokens[start]));
+    return std::make_shared<CloseObject>(std::dynamic_pointer_cast<RightCurlyBracket>(m_tokens[start]));
     
 }
 
@@ -94,8 +94,8 @@ std::shared_ptr<Name> TokenHandlers::buildName(
 
     while(m_tokens[m_index]->type() != CharacterType::WhiteSpace &&
     (m_tokens[m_index]->symbolType() != SymbolType::ForwardSlash) &&
-    (m_tokens[m_index]->symbolType() != SymbolType::CloseBracket) &&
-    (m_tokens[m_index]->symbolType() != SymbolType::CloseParenthesis) &&
+    (m_tokens[m_index]->symbolType() != SymbolType::GreaterThanSymbol) &&
+    (m_tokens[m_index]->symbolType() != SymbolType::RightParenthesis) &&
     (m_tokens[m_index]->symbolType() != SymbolType::EqualSymbol) &&
     (m_tokens[m_index]->symbolType() != SymbolType::Dash) &&
     (m_tokens[m_index]->symbolType() != SymbolType::Colon) &&
@@ -168,7 +168,7 @@ std::shared_ptr<OpenArray> TokenHandlers::buildOpenArray(
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
 
     return std::make_shared<OpenArray>(
-            std::dynamic_pointer_cast<ArrayOpenBracket>(m_tokens[start]));
+            std::dynamic_pointer_cast<LeftSquareBracket>(m_tokens[start]));
 
 }
 
@@ -187,7 +187,7 @@ std::shared_ptr<OpenObject> TokenHandlers::buildOpenObject(
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
     return std::make_shared<OpenObject>(
-            std::dynamic_pointer_cast<ObjectOpenBracket>(m_tokens[start]));
+            std::dynamic_pointer_cast<LeftCurlyBracket>(m_tokens[start]));
 }
 
 /**
@@ -377,8 +377,8 @@ std::shared_ptr<StringType> TokenHandlers::buildNestedString(
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
 
     while(
-        m_tokens[m_index]->symbolType() != SymbolType::OpenBracket &&
-        m_tokens[m_index]->symbolType() != SymbolType::ObjectOpenBracket &&
+        m_tokens[m_index]->symbolType() != SymbolType::LessThanSymbol &&
+        m_tokens[m_index]->symbolType() != SymbolType::LeftCurlyBracket &&
         m_tokens[m_index]->symbolType() != SymbolType::Dash )
     {
         characters.push_back(m_tokens[m_index]);
@@ -427,7 +427,7 @@ std::shared_ptr<CloseParenthesisComponent> TokenHandlers::buildCloseParenthesis(
     
     return std::make_shared<CloseParenthesisComponent>
     (
-        std::dynamic_pointer_cast<CloseParenthesis>(m_tokens[start])
+        std::dynamic_pointer_cast<RightParenthesis>(m_tokens[start])
     );
 }
 
@@ -448,6 +448,6 @@ std::shared_ptr<OpenParenthesisComponent> TokenHandlers::buildOpenParenthesis(
     
     return std::make_shared<OpenParenthesisComponent>
     (
-        std::dynamic_pointer_cast<OpenParenthesis>(m_tokens[start])
+        std::dynamic_pointer_cast<LeftParenthesis>(m_tokens[start])
     );
 }
