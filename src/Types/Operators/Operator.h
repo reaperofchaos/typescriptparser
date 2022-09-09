@@ -6,7 +6,7 @@ enum class OperatorType
     AssignmentOperator,
     ArithmeticOperator,
     ComparisonOperator, 
-    LogicOperator,
+    LogicalOperator,
     BitwiseOperator,
     Unknown,
 };
@@ -99,8 +99,8 @@ class Operator: public Component
                     return "Arithmetic Operator";
                 case OperatorType::ComparisonOperator:
                     return "Comparison Operator";
-                case OperatorType::LogicOperator:
-                    return "Logic Operator";
+                case OperatorType::LogicalOperator:
+                    return "Logical Operator";
                 case OperatorType::BitwiseOperator:
                     return "Bitwise Operator";
                 default: 
