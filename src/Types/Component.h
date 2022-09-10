@@ -35,6 +35,7 @@ class AndComponent;
 enum class ComponentType
 {
     Operator,
+    Keyword,
     Name, 
     StringType,
     ArrayType,

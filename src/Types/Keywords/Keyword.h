@@ -6,6 +6,7 @@
 enum class KeywordType
 {
     VariableKeyword,
+    DataTypeKeyword,
     Unknown
 };
 
@@ -14,6 +15,21 @@ enum class VariableKeywordType
     LetWord,
     VarWord, 
     ConstWord,
+    Unknown
+};
+
+enum class DataTypeKeywordType
+{
+    StringKeyword,
+    BooleanKeyword,
+    BigIntKeyword,
+    NullKeyword,
+    UndefinedKeyword,
+    SymbolKeyword,
+    NeverKeyword,
+    UnknownKeyword,
+    AnyKeyword, 
+    VoidKeyword,
     Unknown
 };
 
@@ -41,7 +57,7 @@ class Keyword: public Component
                     return "Not a Keyword";
             }
         }
-        virtual ComponentType type(){ return ComponentType::Operator;}
+        virtual ComponentType type(){ return ComponentType::Keyword;}
         virtual KeywordType operatorType(){ return KeywordType::Unknown;}
         virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::Unknown;}
         virtual std::string inspect() { assert(0); }

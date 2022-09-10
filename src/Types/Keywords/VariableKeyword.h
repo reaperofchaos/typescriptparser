@@ -32,12 +32,12 @@ class VariableKeyword: public Keyword
                     return "Not a variable Keyword";
             }
         }
-        virtual ComponentType type(){ return ComponentType::Operator;}
-        virtual KeywordType operatorType(){ return KeywordType::VariableKeyword;}
+        virtual KeywordType keywordType(){ return KeywordType::VariableKeyword;}
         virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::Unknown;}
         virtual std::string inspect() { assert(0); }
         virtual std::string getValue(){ return value;}
-        virtual std::string getType(){return this->getTypeAsString(this->type());}
+        virtual std::string getKeywordType(){return this->getKeywordTypeAsString(this->keywordType());}
+        virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
 };
 
 class LetWord: public VariableKeyword{
@@ -54,8 +54,8 @@ class LetWord: public VariableKeyword{
         }
         virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::LetWord;}
         virtual std::string getValue(){ return value;}
-        virtual std::string getType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
-        virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
+        virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
+        virtual std::string inspect(){ return "Type " + getVariableKeywordType() + " - " + getValue();}
 };
 
 class VarWord: public VariableKeyword{
@@ -72,8 +72,8 @@ class VarWord: public VariableKeyword{
         }
         virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::VarWord;}
         virtual std::string getValue(){ return value;}
-        virtual std::string getType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
-        virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
+        virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
+        virtual std::string inspect(){ return "Type " + getVariableKeywordType() + " - " + getValue();}
 };
 
 class ConstWord: public VariableKeyword{
@@ -90,6 +90,6 @@ class ConstWord: public VariableKeyword{
         }
         virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::ConstWord;}
         virtual std::string getValue(){ return value;}
-        virtual std::string getType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
-        virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
+        virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
+        virtual std::string inspect(){ return "Type " + getVariableKeywordType() + " - " + getValue();}
 };

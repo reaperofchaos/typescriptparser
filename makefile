@@ -45,6 +45,7 @@ $(OBJDIR)/LogicalOperator.o \
 $(OBJDIR)/BitwiseOperator.o \
 $(OBJDIR)/Keyword.o \
 $(OBJDIR)/VariableKeyword.o \
+$(OBJDIR)/DataTypeKeyword.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
@@ -70,6 +71,7 @@ $(OBJDIR)/LogicalOperator.o \
 $(OBJDIR)/BitwiseOperator.o \
 $(OBJDIR)/Keyword.o \
 $(OBJDIR)/VariableKeyword.o \
+$(OBJDIR)/DataTypeKeyword.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
@@ -94,6 +96,7 @@ $(OBJDIR)/LLogicalOperator.o \
 $(OBJDIR)/LBitwiseOperator.o \
 $(OBJDIR)/LKeyword.o \
 $(OBJDIR)/LVariableKeyword.o \
+$(OBJDIR)/DataTypeKeyword.o \
 $(OBJDIR)/LPrimitive.o \
 $(OBJDIR)/LPropHandlers.o \
 $(OBJDIR)/LPrimitiveHandlers.o \
@@ -179,6 +182,9 @@ $(OBJDIR)/Keyword.o:
 $(OBJDIR)/VariableKeyword.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Keywords/VariableKeyword.cpp -o $(OBJDIR)/VariableKeyword.o
 
+$(OBJDIR)/DataTypeKeyword.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Keywords/DataTypeKeyword.cpp -o $(OBJDIR)/DataTypeKeyword.o
+
 $(OBJDIR)/Symbol.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/Symbol.o
 
@@ -257,6 +263,10 @@ $(OBJDIR)/LKeyword.o:
 
 $(OBJDIR)/LVariableKeyword.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Keywords/VariableKeyword.cpp -o $(OBJDIR)/LVariableKeyword.o
+
+$(OBJDIR)/LDataTypeKeyword.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Keywords/DataTypeKeyword.cpp -o $(OBJDIR)/LDataTypeKeyword.o
+
 
 $(OBJDIR)/LSymbol.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/LSymbol.o
