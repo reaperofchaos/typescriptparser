@@ -43,6 +43,8 @@ $(OBJDIR)/ArithmeticOperator.o \
 $(OBJDIR)/ComparisonOperator.o \
 $(OBJDIR)/LogicalOperator.o \
 $(OBJDIR)/BitwiseOperator.o \
+$(OBJDIR)/Keyword.o \
+$(OBJDIR)/VariableKeyword.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
@@ -66,6 +68,8 @@ $(OBJDIR)/ArithmeticOperator.o \
 $(OBJDIR)/ComparisonOperator.o \
 $(OBJDIR)/LogicalOperator.o \
 $(OBJDIR)/BitwiseOperator.o \
+$(OBJDIR)/Keyword.o \
+$(OBJDIR)/VariableKeyword.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
@@ -88,6 +92,8 @@ $(OBJDIR)/LArithmeticOperator.o \
 $(OBJDIR)/LComparisonOperator.o \
 $(OBJDIR)/LLogicalOperator.o \
 $(OBJDIR)/LBitwiseOperator.o \
+$(OBJDIR)/LKeyword.o \
+$(OBJDIR)/LVariableKeyword.o \
 $(OBJDIR)/LPrimitive.o \
 $(OBJDIR)/LPropHandlers.o \
 $(OBJDIR)/LPrimitiveHandlers.o \
@@ -146,7 +152,6 @@ $(OBJDIR)/Primitive.o:
 $(OBJDIR)/Component.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Component.cpp -o $(OBJDIR)/Component.o
 
-
 $(OBJDIR)/TokenHandlers.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/TokenHandlers.cpp -o $(OBJDIR)/TokenHandlers.o
 
@@ -168,9 +173,14 @@ $(OBJDIR)/LogicalOperator.o:
 $(OBJDIR)/BitwiseOperator.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Operators/BitwiseOperator.cpp -o $(OBJDIR)/BitwiseOperator.o
 
+$(OBJDIR)/Keyword.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Keywords/Keyword.cpp -o $(OBJDIR)/Keyword.o
+
+$(OBJDIR)/VariableKeyword.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Keywords/VariableKeyword.cpp -o $(OBJDIR)/VariableKeyword.o
+
 $(OBJDIR)/Symbol.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/Symbol.o
-
 
 $(OBJDIR)/CharType.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/CharType.cpp -o $(OBJDIR)/CharType.o
@@ -221,7 +231,6 @@ $(OBJDIR)/LPrimitive.o:
 $(OBJDIR)/LComponent.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Component.cpp -o $(OBJDIR)/LComponent.o
 
-
 $(OBJDIR)/LTokenHandlers.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/TokenHandlers.cpp -o $(OBJDIR)/LTokenHandlers.o
 
@@ -243,9 +252,14 @@ $(OBJDIR)/LLogicalOperator.o:
 $(OBJDIR)/LBitwiseOperator.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Operators/BitwiseOperator.cpp -o $(OBJDIR)/LBitwiseOperator.o
 
+$(OBJDIR)/LKeyword.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Keywords/Keyword.cpp -o $(OBJDIR)/LKeyword.o
+
+$(OBJDIR)/LVariableKeyword.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Keywords/VariableKeyword.cpp -o $(OBJDIR)/LVariableKeyword.o
+
 $(OBJDIR)/LSymbol.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/LSymbol.o
-
 
 $(OBJDIR)/LCharType.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/CharType.cpp -o $(OBJDIR)/LCharType.o
