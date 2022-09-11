@@ -177,6 +177,10 @@ class Name: public Component
             this->value = value;
             // std::cout << this->inspect() << "\n";
         }
+        Name(std::string value)
+        {
+            this->value = value;
+        }
 
         virtual ComponentType type(){ return ComponentType::Name;}
         virtual void setValue(std::shared_ptr<Letter> letter, std::vector<std::shared_ptr<Character>> characters)

@@ -6,6 +6,7 @@
 
 class StringKeyword;
 class BooleanKeyword;
+class NumberKeyword;
 class BigIntKeyword;
 class NullKeyword;
 class UndefinedKeyword;
@@ -44,6 +45,20 @@ class StringKeyword: public DataTypeKeyword{
             this->value = letters;
         }
         virtual DataTypeKeywordType dataTypeKeywordType(){ return DataTypeKeywordType::StringKeyword;}
+        virtual std::string getValue(){ return value;}
+        virtual std::string getDataTypeKeywordType(){return this->getDataTypeKeywordAsString(this->dataTypeKeywordType());}
+        virtual std::string inspect(){ return "Type " + getDataTypeKeywordType() + " - " + getValue();}
+};
+
+class NumberKeyword: public DataTypeKeyword{
+    private:
+        std::string value; 
+    public:
+        NumberKeyword(std::string letters): DataTypeKeyword(letters)
+        {
+            this->value = letters;
+        }
+        virtual DataTypeKeywordType dataTypeKeywordType(){ return DataTypeKeywordType::NumberKeyword;}
         virtual std::string getValue(){ return value;}
         virtual std::string getDataTypeKeywordType(){return this->getDataTypeKeywordAsString(this->dataTypeKeywordType());}
         virtual std::string inspect(){ return "Type " + getDataTypeKeywordType() + " - " + getValue();}

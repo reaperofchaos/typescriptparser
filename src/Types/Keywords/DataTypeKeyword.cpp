@@ -8,6 +8,8 @@ std::string DataTypeKeyword::getDataTypeKeywordAsString(DataTypeKeywordType type
             return "String keyword";
         case DataTypeKeywordType::BooleanKeyword:
             return "Boolean Keyword";
+        case DataTypeKeywordType::NumberKeyword:
+            return "Number Keyword";
         case DataTypeKeywordType::BigIntKeyword:
             return "BigInt Keyword";
         case DataTypeKeywordType::NullKeyword:

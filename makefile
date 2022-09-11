@@ -50,6 +50,7 @@ $(OBJDIR)/ContainerKeyword.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
+$(OBJDIR)/KeywordHandlers.o \
 $(OBJDIR)/PrimitiveBuilder.o \
 $(OBJDIR)/ElementBuilder.o \
 $(OBJDIR)/Element.o \
@@ -77,6 +78,7 @@ $(OBJDIR)/ContainerKeyword.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
+$(OBJDIR)/KeywordHandlers.o \
 $(OBJDIR)/PrimitiveBuilder.o \
 $(OBJDIR)/ElementBuilder.o \
 $(OBJDIR)/Element.o \
@@ -104,6 +106,7 @@ $(OBJDIR)/LPrimitive.o \
 $(OBJDIR)/LPropHandlers.o \
 $(OBJDIR)/LPrimitiveHandlers.o \
 $(OBJDIR)/LElementHandlers.o \
+$(OBJDIR)/LKeywordHandlers.o \
 $(OBJDIR)/LPrimitiveBuilder.o \
 $(OBJDIR)/LElementBuilder.o \
 $(OBJDIR)/LElement.o \
@@ -160,6 +163,9 @@ $(OBJDIR)/Component.o:
 
 $(OBJDIR)/TokenHandlers.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/TokenHandlers.cpp -o $(OBJDIR)/TokenHandlers.o
+
+$(OBJDIR)/KeywordHandlers.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/KeywordHandlers.cpp -o $(OBJDIR)/KeywordHandlers.o
 
 $(OBJDIR)/Operator.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Operators/Operator.cpp -o $(OBJDIR)/Operator.o
@@ -233,6 +239,9 @@ $(OBJDIR)/LPropHandlers.o:
 
 $(OBJDIR)/LElementHandlers.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/ElementHandlers.cpp -o $(OBJDIR)/LElementHandlers.o
+
+$(OBJDIR)/LKeywordHandlers.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/KeywordHandlers.cpp -o $(OBJDIR)/LKeywordHandlers.o
 
 $(OBJDIR)/LPrimitiveHandlers.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/PrimitiveHandlers.cpp -o $(OBJDIR)/LPrimitiveHandlers.o

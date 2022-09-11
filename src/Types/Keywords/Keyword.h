@@ -72,6 +72,7 @@ enum class DataTypeKeywordType
 {
     StringKeyword,
     BooleanKeyword,
+    NumberKeyword,
     BigIntKeyword,
     NullKeyword,
     UndefinedKeyword,
