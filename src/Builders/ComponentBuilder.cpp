@@ -78,7 +78,7 @@ std::shared_ptr<Component>ComponentBuilder::next(){
             case CharacterType::Letter:
             case CharacterType::Uppercase:
             case CharacterType::Lowercase:
-                return TokenHandlers::buildName(m_tokens, m_index, start, characters);
+                return TokenHandlers::buildName(m_tokens, m_index, characters);
 
             case CharacterType::Symbol:
                 switch(m_tokens[m_index]->symbolType())

@@ -6,7 +6,7 @@
 #include "../Types/CharType.h"
 #include "../Types/Component.h"
 #include "../Utils/CharacterUtilities.h"
-
+#include "KeywordHandlers.h"
 /**
  * A class used to create Components from Token vectors
  */
@@ -31,10 +31,9 @@ class TokenHandlers {
         static std::shared_ptr<WhiteSpaces> buildWhiteSpaces(
             std::vector<std::shared_ptr<WhiteSpace>> &whiteSpaces);
 
-        static std::shared_ptr<Name> buildName(
+        static std::shared_ptr<Component> buildName(
             std::vector<std::shared_ptr<Character>> &m_tokens, 
             size_t &m_index,
-            size_t &start,
             std::vector<std::shared_ptr<Character>> &characters);
 
         static std::shared_ptr<StringType> buildString(

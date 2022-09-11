@@ -83,10 +83,9 @@ std::shared_ptr<WhiteSpaces> TokenHandlers::buildWhiteSpaces(
  * @param characters 
  * @return std::shared_ptr<Name> 
  */
-std::shared_ptr<Name> TokenHandlers::buildName(
+std::shared_ptr<Component> TokenHandlers::buildName(
     std::vector<std::shared_ptr<Character>> &m_tokens, 
     size_t &m_index,
-    size_t &start,
     std::vector<std::shared_ptr<Character>> &characters)
 {
 
@@ -105,10 +104,11 @@ std::shared_ptr<Name> TokenHandlers::buildName(
         characters.push_back(std::dynamic_pointer_cast<Character>(m_tokens[m_index]));
         CharacterUtilities::IncrementIndex(m_tokens, m_index);
     }
-
-    return std::make_shared<Name>(
-        std::dynamic_pointer_cast<Letter>(m_tokens[start]),
-        characters);
+    std::string value = "";
+    for(std::shared_ptr<Character> character : characters){
+        value += character->getValue(); 
+    }
+    return KeywordHandlers::buildKeyword(value);
 }
 
 /**
