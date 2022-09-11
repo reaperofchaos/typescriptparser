@@ -19,19 +19,7 @@ class VariableKeyword: public Keyword
         }
         
         virtual ~VariableKeyword() = default;
-        virtual std::string getVariableKeywordTypeAsString(VariableKeywordType type){
-            switch (type)
-            {
-                case VariableKeywordType::LetWord:
-                    return "Let";
-                case VariableKeywordType::VarWord:
-                    return "Var";
-                case VariableKeywordType::ConstWord:
-                    return "Const";
-                default: 
-                    return "Not a variable Keyword";
-            }
-        }
+        virtual std::string getVariableKeywordTypeAsString(VariableKeywordType type);
         virtual KeywordType keywordType(){ return KeywordType::VariableKeyword;}
         virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::Unknown;}
         virtual std::string inspect() { assert(0); }
@@ -40,11 +28,11 @@ class VariableKeyword: public Keyword
         virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
 };
 
-class LetWord: public VariableKeyword{
+class LetKeyWord: public VariableKeyword{
     private:
         std::string value; 
     public:
-        LetWord(std::vector<std::shared_ptr<Lowercase>> letters): VariableKeyword(letters)
+        LetKeyWord(std::vector<std::shared_ptr<Lowercase>> letters): VariableKeyword(letters)
         {
             std::string value = ""; 
             for(std::shared_ptr<Lowercase> letter: letters){
@@ -52,17 +40,17 @@ class LetWord: public VariableKeyword{
             }
             this->value = value;
         }
-        virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::LetWord;}
+        virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::LetKeyWord;}
         virtual std::string getValue(){ return value;}
         virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
         virtual std::string inspect(){ return "Type " + getVariableKeywordType() + " - " + getValue();}
 };
 
-class VarWord: public VariableKeyword{
+class VarKeyWord: public VariableKeyword{
     private:
         std::string value; 
     public:
-        VarWord(std::vector<std::shared_ptr<Lowercase>> letters): VariableKeyword(letters)
+        VarKeyWord(std::vector<std::shared_ptr<Lowercase>> letters): VariableKeyword(letters)
         {
             std::string value = ""; 
             for(std::shared_ptr<Lowercase> letter: letters){
@@ -70,17 +58,17 @@ class VarWord: public VariableKeyword{
             }
             this->value = value;
         }
-        virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::VarWord;}
+        virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::VarKeyWord;}
         virtual std::string getValue(){ return value;}
         virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
         virtual std::string inspect(){ return "Type " + getVariableKeywordType() + " - " + getValue();}
 };
 
-class ConstWord: public VariableKeyword{
+class ConstKeyWord: public VariableKeyword{
     private:
         std::string value; 
     public:
-        ConstWord(std::vector<std::shared_ptr<Lowercase>> letters): VariableKeyword(letters)
+        ConstKeyWord(std::vector<std::shared_ptr<Lowercase>> letters): VariableKeyword(letters)
         {
             std::string value = ""; 
             for(std::shared_ptr<Lowercase> letter: letters){
@@ -88,7 +76,79 @@ class ConstWord: public VariableKeyword{
             }
             this->value = value;
         }
-        virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::ConstWord;}
+        virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::ConstKeyWord;}
+        virtual std::string getValue(){ return value;}
+        virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
+        virtual std::string inspect(){ return "Type " + getVariableKeywordType() + " - " + getValue();}
+};
+
+class EnumKeyWord: public VariableKeyword{
+    private:
+        std::string value; 
+    public:
+        EnumKeyWord(std::vector<std::shared_ptr<Lowercase>> letters): VariableKeyword(letters)
+        {
+            std::string value = ""; 
+            for(std::shared_ptr<Lowercase> letter: letters){
+                value += letter->getValue(); 
+            }
+            this->value = value;
+        }
+        virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::EnumKeyWord;}
+        virtual std::string getValue(){ return value;}
+        virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
+        virtual std::string inspect(){ return "Type " + getVariableKeywordType() + " - " + getValue();}
+};
+
+class InterfaceKeyWord: public VariableKeyword{
+    private:
+        std::string value; 
+    public:
+        InterfaceKeyWord(std::vector<std::shared_ptr<Lowercase>> letters): VariableKeyword(letters)
+        {
+            std::string value = ""; 
+            for(std::shared_ptr<Lowercase> letter: letters){
+                value += letter->getValue(); 
+            }
+            this->value = value;
+        }
+        virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::InterfaceKeyWord;}
+        virtual std::string getValue(){ return value;}
+        virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
+        virtual std::string inspect(){ return "Type " + getVariableKeywordType() + " - " + getValue();}
+};
+
+class FunctionKeyWord: public VariableKeyword{
+    private:
+        std::string value; 
+    public:
+        FunctionKeyWord(std::vector<std::shared_ptr<Lowercase>> letters): VariableKeyword(letters)
+        {
+            std::string value = ""; 
+            for(std::shared_ptr<Lowercase> letter: letters){
+                value += letter->getValue(); 
+            }
+            this->value = value;
+        }
+        virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::FunctionKeyWord;}
+        virtual std::string getValue(){ return value;}
+        virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
+        virtual std::string inspect(){ return "Type " + getVariableKeywordType() + " - " + getValue();}
+};
+
+class ClassKeyWord: public VariableKeyword{
+    private:
+        std::string value; 
+    public:
+        ClassKeyWord(std::vector<std::shared_ptr<Lowercase>> letters): VariableKeyword(letters)
+        {
+            std::string value = ""; 
+            for(std::shared_ptr<Lowercase> letter: letters){
+                value += letter->getValue(); 
+            }
+            this->value = value;
+        }
+        virtual VariableKeywordType variableKeywordType(){ return VariableKeywordType::ClassKeyWord;}
         virtual std::string getValue(){ return value;}
         virtual std::string getVariableKeywordType(){return this->getVariableKeywordTypeAsString(this->variableKeywordType());}
         virtual std::string inspect(){ return "Type " + getVariableKeywordType() + " - " + getValue();}
