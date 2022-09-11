@@ -9,13 +9,9 @@ class ContainerKeyword: public Keyword
     private:
         std::string value;
     public:
-        ContainerKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ContainerKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         
         virtual ~ContainerKeyword() = default;
@@ -32,13 +28,9 @@ class ArrayKeyword: public ContainerKeyword{
     private:
         std::string value; 
     public:
-        ArrayKeyword(std::vector<std::shared_ptr<Lowercase>> letters): ContainerKeyword(letters)
+        ArrayKeyword(std::string letters): ContainerKeyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual ContainerKeywordType containerKeywordType(){ return ContainerKeywordType::ArrayKeyword;}
         virtual std::string getValue(){ return value;}
@@ -50,13 +42,9 @@ class MapKeyword: public ContainerKeyword{
     private:
         std::string value; 
     public:
-        MapKeyword(std::vector<std::shared_ptr<Lowercase>> letters): ContainerKeyword(letters)
+        MapKeyword(std::string letters): ContainerKeyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual ContainerKeywordType containerKeywordType(){ return ContainerKeywordType::MapKeyword;}
         virtual std::string getValue(){ return value;}
@@ -68,13 +56,9 @@ class SetKeyword: public ContainerKeyword{
     private:
         std::string value; 
     public:
-        SetKeyword(std::vector<std::shared_ptr<Lowercase>> letters): ContainerKeyword(letters)
+        SetKeyword(std::string letters): ContainerKeyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual ContainerKeywordType containerKeywordType(){ return ContainerKeywordType::SetKeyword;}
         virtual std::string getValue(){ return value;}
@@ -86,13 +70,9 @@ class ObjectKeyword: public ContainerKeyword{
     private:
         std::string value; 
     public:
-        ObjectKeyword(std::vector<std::shared_ptr<Lowercase>> letters): ContainerKeyword(letters)
+        ObjectKeyword(std::string letters): ContainerKeyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual ContainerKeywordType containerKeywordType(){ return ContainerKeywordType::ObjectKeyword;}
         virtual std::string getValue(){ return value;}

@@ -31,6 +31,13 @@ class HashTagComponent;
 class OpenParenthesisComponent;
 class CloseParenthesisComponent;
 class AndComponent;
+class OpenParameter;
+class CloseParameter;
+class OpenInstruction;
+class CloseInstruction; 
+class EndStatement;
+class ArrowFunctionComponent; 
+class CallMethodComponent; 
 
 enum class ComponentType
 {
@@ -58,6 +65,12 @@ enum class ComponentType
     HashTagComponent,
     OpenParenthesisComponent,
     CloseParenthesisComponent,
+    OpenInstruction,
+    CloseInstruction,
+    ArrowFunctionComponent,
+    OpenParameter,
+    CloseParameter,
+    EndStatementComponent,
     AndComponent,
 };
 
@@ -67,52 +80,7 @@ class Component
         std::string value;
     public:
         virtual ~Component() = default;
-        virtual std::string getTypeAsString(ComponentType type){
-            switch (type)
-            {
-                case ComponentType::Name:
-                    return "Name";
-                case ComponentType::StringType:
-                    return "String";
-                case ComponentType::NumberType:
-                    return "Number";
-                case ComponentType::OpenArray:
-                    return "Open array";
-                case ComponentType::OpenObject:
-                    return "Open object";
-                case ComponentType::CloseArray:
-                    return "Close array";
-                case ComponentType::CloseObject:
-                    return "Close object";
-                case ComponentType::WhiteSpaces:
-                    return "White spaces";
-                case ComponentType::ExclamationComponent:
-                    return "Exclamation";
-                case ComponentType::ColonComponent:
-                    return "Colon";
-                case ComponentType::CommaComponent:
-                    return "Comma";
-                case ComponentType::SemicolonComponent:
-                    return "Semicolon";
-                case ComponentType::EqualComponent:
-                    return "Equal";
-                case ComponentType::DashComponent:
-                    return "Dash"; 
-                case ComponentType::PercentageComponent:
-                    return "Percentage Component";
-                case ComponentType::HashTagComponent:
-                    return "Hash Tag Component";
-                case ComponentType::CloseParenthesisComponent:
-                    return "Close Parenthesis";
-                case ComponentType::OpenParenthesisComponent:
-                    return "Close Parenthesis";
-                case ComponentType::Operator:
-                    return "Operator";
-                default: 
-                    return "Unknown";
-            }
-        }
-        
+        virtual std::string getTypeAsString(ComponentType type);
         virtual ComponentType type(){ return ComponentType::Unknown;}
         virtual std::string inspect() { assert(0); }
         virtual std::string getValue(){ return value;}
@@ -556,6 +524,88 @@ class OpenParenthesisComponent: public Component
         }
 
         virtual ComponentType type(){ return ComponentType::OpenParenthesisComponent;}
+        std::string getValue(){ return value;}
+        virtual std::string getType(){return this->getTypeAsString(this->type());}
+        virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
+};
+
+class OpenParameter: public Component
+{
+    private:
+        std::string value;
+
+    public:
+        OpenParameter(std::shared_ptr<LeftParenthesis> openParenthesis ){
+            this->value = openParenthesis->getValue();
+        }
+
+        virtual ComponentType type(){ return ComponentType::OpenParameter;}
+        std::string getValue(){ return value;}
+        virtual std::string getType(){return this->getTypeAsString(this->type());}
+        virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
+};
+
+
+class CloseParameter: public Component
+{
+    private:
+        std::string value;
+
+    public:
+        CloseParameter(std::shared_ptr<LeftParenthesis> openParenthesis ){
+            this->value = openParenthesis->getValue();
+        }
+
+        virtual ComponentType type(){ return ComponentType::CloseParameter;}
+        std::string getValue(){ return value;}
+        virtual std::string getType(){return this->getTypeAsString(this->type());}
+        virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
+};
+
+class OpenInstruction: public Component
+{
+    private:
+        std::string value;
+
+    public:
+        OpenInstruction(std::shared_ptr<LeftCurlyBracket> openBracket){
+            this->value = openBracket->getValue();
+        }
+
+        virtual ComponentType type(){ return ComponentType::OpenInstruction;}
+        std::string getValue(){ return value;}
+        virtual std::string getType(){return this->getTypeAsString(this->type());}
+        virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
+};
+
+class EndStatementComponent: public Component
+{
+    private:
+        std::string value;
+
+    public:
+        EndStatementComponent(std::shared_ptr<Semicolon> semicolon ){
+            this->value = semicolon->getValue();
+        }
+
+        virtual ComponentType type(){ return ComponentType::EndStatementComponent;}
+        std::string getValue(){ return value;}
+        virtual std::string getType(){return this->getTypeAsString(this->type());}
+        virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}
+};
+
+
+class ArrowFunctionComponent: public Component
+{
+    private:
+        std::string value;
+
+    public:
+        ArrowFunctionComponent(std::shared_ptr<EqualSymbol> equal,  std::shared_ptr<GreaterThanSymbol> greaterThan){
+            this->value = equal->getValue() + greaterThan->getValue();
+        }
+
+        virtual ComponentType type(){ return ComponentType::ArrowFunctionComponent;}
         std::string getValue(){ return value;}
         virtual std::string getType(){return this->getTypeAsString(this->type());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}

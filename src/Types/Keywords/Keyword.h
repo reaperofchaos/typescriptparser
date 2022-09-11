@@ -97,13 +97,9 @@ class Keyword: public Component
     private:
         std::string value;
     public:
-        Keyword(std::vector<std::shared_ptr<Lowercase>> letters)
+        Keyword(std::string letters): Component()
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         
         virtual ~Keyword() = default;
@@ -121,13 +117,9 @@ class ExtendsKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ExtendsKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ExtendsKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ExtendsKeyword;}
         virtual std::string getValue(){ return value;}
@@ -139,13 +131,9 @@ class DeleteKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        DeleteKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        DeleteKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::DeleteKeyword;}
         virtual std::string getValue(){ return value;}
@@ -157,13 +145,9 @@ class DebuggerKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        DebuggerKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        DebuggerKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::DebuggerKeyword;}
         virtual std::string getValue(){ return value;}
@@ -175,13 +159,9 @@ class DefaultKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        DefaultKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        DefaultKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::DefaultKeyword;}
         virtual std::string getValue(){ return value;}
@@ -193,13 +173,9 @@ class ImportKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ImportKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ImportKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ImportKeyword;}
         virtual std::string getValue(){ return value;}
@@ -212,13 +188,9 @@ class InstanceOfKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        InstanceOfKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        InstanceOfKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::InstanceOfKeyword;}
         virtual std::string getValue(){ return value;}
@@ -230,13 +202,9 @@ class TypeOfKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        TypeOfKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        TypeOfKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::TypeOfKeyword;}
         virtual std::string getValue(){ return value;}
@@ -248,13 +216,9 @@ class RequireKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        RequireKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        RequireKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::RequireKeyword;}
         virtual std::string getValue(){ return value;}
@@ -266,13 +230,9 @@ class WithKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        WithKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        WithKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::WithKeyword;}
         virtual std::string getValue(){ return value;}
@@ -284,13 +244,9 @@ class AsKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        AsKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        AsKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::AsKeyword;}
         virtual std::string getValue(){ return value;}
@@ -302,13 +258,9 @@ class ImplementsKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ImplementsKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ImplementsKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ImplementsKeyword;}
         virtual std::string getValue(){ return value;}
@@ -320,13 +272,9 @@ class PackageKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        PackageKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        PackageKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::PackageKeyword;}
         virtual std::string getValue(){ return value;}
@@ -338,13 +286,9 @@ class YieldKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        YieldKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        YieldKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::YieldKeyword;}
         virtual std::string getValue(){ return value;}
@@ -356,13 +300,9 @@ class ConstructorKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ConstructorKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ConstructorKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ConstructorKeyword;}
         virtual std::string getValue(){ return value;}
@@ -374,13 +314,9 @@ class ModuleKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ModuleKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ModuleKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ModuleKeyword;}
         virtual std::string getValue(){ return value;}
@@ -392,13 +328,9 @@ class GetKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        GetKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        GetKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::GetKeyword;}
         virtual std::string getValue(){ return value;}
@@ -410,13 +342,9 @@ class DeclareKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        DeclareKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        DeclareKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::DeclareKeyword;}
         virtual std::string getValue(){ return value;}
@@ -428,13 +356,9 @@ class FromKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        FromKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        FromKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::FromKeyword;}
         virtual std::string getValue(){ return value;}
@@ -446,13 +370,9 @@ class AwaitKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        AwaitKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        AwaitKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::AwaitKeyword;}
         virtual std::string getValue(){ return value;}
@@ -464,13 +384,9 @@ class AsyncKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        AsyncKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        AsyncKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::AsyncKeyword;}
         virtual std::string getValue(){ return value;}
@@ -482,13 +398,9 @@ class PromiseKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        PromiseKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        PromiseKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::PromiseKeyword;}
         virtual std::string getValue(){ return value;}
@@ -500,13 +412,9 @@ class SwitchKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        SwitchKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        SwitchKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::SwitchKeyword;}
         virtual std::string getValue(){ return value;}
@@ -518,13 +426,9 @@ class CaseKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        CaseKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        CaseKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::CaseKeyword;}
         virtual std::string getValue(){ return value;}
@@ -536,13 +440,9 @@ class BreakKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        BreakKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        BreakKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::BreakKeyword;}
         virtual std::string getValue(){ return value;}
@@ -554,13 +454,9 @@ class ReturnKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ReturnKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ReturnKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ReturnKeyword;}
         virtual std::string getValue(){ return value;}
@@ -572,13 +468,9 @@ class IfKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        IfKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        IfKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::IfKeyword;}
         virtual std::string getValue(){ return value;}
@@ -590,13 +482,9 @@ class ElseKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ElseKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ElseKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ElseKeyword;}
         virtual std::string getValue(){ return value;}
@@ -608,13 +496,9 @@ class ForKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ForKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ForKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ForKeyword;}
         virtual std::string getValue(){ return value;}
@@ -626,13 +510,9 @@ class WhileKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        WhileKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        WhileKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::WhileKeyword;}
         virtual std::string getValue(){ return value;}
@@ -644,13 +524,9 @@ class DoKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        DoKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        DoKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::DoKeyword;}
         virtual std::string getValue(){ return value;}
@@ -662,13 +538,9 @@ class ContinueKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ContinueKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ContinueKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ContinueKeyword;}
         virtual std::string getValue(){ return value;}
@@ -680,13 +552,9 @@ class OfKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        OfKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        OfKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::OfKeyword;}
         virtual std::string getValue(){ return value;}
@@ -698,13 +566,9 @@ class InKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        InKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        InKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::InKeyword;}
         virtual std::string getValue(){ return value;}
@@ -716,13 +580,9 @@ class ErrorKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ErrorKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ErrorKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ErrorKeyword;}
         virtual std::string getValue(){ return value;}
@@ -734,13 +594,9 @@ class TryKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        TryKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        TryKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::TryKeyword;}
         virtual std::string getValue(){ return value;}
@@ -752,13 +608,9 @@ class CatchKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        CatchKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        CatchKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::CatchKeyword;}
         virtual std::string getValue(){ return value;}
@@ -770,13 +622,9 @@ class ThrowKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ThrowKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ThrowKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ThrowKeyword;}
         virtual std::string getValue(){ return value;}
@@ -788,13 +636,9 @@ class FinallyKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        FinallyKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        FinallyKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::FinallyKeyword;}
         virtual std::string getValue(){ return value;}
@@ -806,13 +650,9 @@ class PrivateKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        PrivateKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        PrivateKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::PrivateKeyword;}
         virtual std::string getValue(){ return value;}
@@ -824,13 +664,9 @@ class PublicKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        PublicKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        PublicKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::PublicKeyword;}
         virtual std::string getValue(){ return value;}
@@ -842,13 +678,9 @@ class ProtectedKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ProtectedKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ProtectedKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ProtectedKeyword;}
         virtual std::string getValue(){ return value;}
@@ -860,13 +692,9 @@ class StaticKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        StaticKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        StaticKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::StaticKeyword;}
         virtual std::string getValue(){ return value;}
@@ -878,13 +706,9 @@ class NewKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        NewKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        NewKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::NewKeyword;}
         virtual std::string getValue(){ return value;}
@@ -896,13 +720,9 @@ class SuperKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        SuperKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        SuperKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::SuperKeyword;}
         virtual std::string getValue(){ return value;}
@@ -914,13 +734,9 @@ class ThisKeyword: public Keyword{
     private:
         std::string value; 
     public:
-        ThisKeyword(std::vector<std::shared_ptr<Lowercase>> letters): Keyword(letters)
+        ThisKeyword(std::string letters): Keyword(letters)
         {
-            std::string value = ""; 
-            for(std::shared_ptr<Lowercase> letter: letters){
-                value += letter->getValue(); 
-            }
-            this->value = value;
+            this->value = letters;
         }
         virtual KeywordType keywordType(){ return KeywordType::ThisKeyword;}
         virtual std::string getValue(){ return value;}
