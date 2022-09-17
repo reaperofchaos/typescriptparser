@@ -12,7 +12,7 @@ void CharacterUtilities::IgnoreWhiteSpace(
     std::vector<std::shared_ptr<Character>> &characters,
     size_t &m_index)
 {
-    while(characters[m_index]->type() == CharacterType::WhiteSpace )
+    while(characters[m_index]->type() == CharacterType::WhiteSpace && m_index != characters.size()-1 )
     {
         CharacterUtilities::IncrementIndex(characters, m_index);
     } 

@@ -106,7 +106,10 @@ std::map<std::string, DataTypeKeywordType> KeywordHandlers::dataTypeKeywordToStr
 
 std::shared_ptr<Component> KeywordHandlers::buildKeyword(std::string value)
 {
-    KeywordType keyword = KeywordHandlers::keywordToString[value];
+    if(KeywordHandlers::keywordToString.count(value) == 0){
+        return std::make_shared<Name>(value);
+    }
+    KeywordType keyword = KeywordHandlers::keywordToString.at(value);
 
     switch(keyword)
     {

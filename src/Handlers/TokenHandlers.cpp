@@ -18,6 +18,8 @@ std::shared_ptr<NumberType> TokenHandlers::buildNumberComponent(
         numbers.push_back(std::make_shared<Number>(m_tokens[m_index]->getValue()));
         CharacterUtilities::IncrementIndex(m_tokens, m_index);
     }
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+
     return std::make_shared<NumberType>(numbers);
 }
 
@@ -35,6 +37,7 @@ std::shared_ptr<CloseArray> TokenHandlers::buildCloseArray(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
 
     return std::make_shared<CloseArray>(std::dynamic_pointer_cast<RightSquareBracket>(m_tokens[start]));
     
@@ -86,6 +89,7 @@ std::shared_ptr<WhiteSpaces> TokenHandlers::buildWhiteSpaces(
 std::shared_ptr<Component> TokenHandlers::buildName(
     std::vector<std::shared_ptr<Character>> &m_tokens, 
     size_t &m_index,
+    size_t &start,
     std::vector<std::shared_ptr<Character>> &characters)
 {
 
@@ -104,10 +108,12 @@ std::shared_ptr<Component> TokenHandlers::buildName(
         characters.push_back(std::dynamic_pointer_cast<Character>(m_tokens[m_index]));
         CharacterUtilities::IncrementIndex(m_tokens, m_index);
     }
-    std::string value = "";
+    std::string value = m_tokens[start]->getValue();
     for(std::shared_ptr<Character> character : characters){
         value += character->getValue(); 
     }
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+
     return KeywordHandlers::buildKeyword(value);
 }
 
@@ -128,6 +134,7 @@ std::shared_ptr<StringType> TokenHandlers::buildString(
 {
 
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
     if(symbolType == SymbolType::SingleQuote)
     {
         while( m_tokens[m_index]->symbolType() != SymbolType::SingleQuote)
@@ -137,7 +144,7 @@ std::shared_ptr<StringType> TokenHandlers::buildString(
         }
 
         CharacterUtilities::IncrementIndex(m_tokens, m_index);
-
+        CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
         return std::make_shared<StringType>(characters);
     }else{
         while( m_tokens[m_index]->symbolType() != SymbolType::Quote)
@@ -147,6 +154,7 @@ std::shared_ptr<StringType> TokenHandlers::buildString(
         }
 
         CharacterUtilities::IncrementIndex(m_tokens, m_index);
+        CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
 
         return std::make_shared<StringType>(characters);
     }
@@ -166,6 +174,7 @@ std::shared_ptr<OpenArray> TokenHandlers::buildOpenArray(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
 
     return std::make_shared<OpenArray>(
             std::dynamic_pointer_cast<LeftSquareBracket>(m_tokens[start]));
@@ -186,6 +195,8 @@ std::shared_ptr<OpenObject> TokenHandlers::buildOpenObject(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+
     return std::make_shared<OpenObject>(
             std::dynamic_pointer_cast<LeftCurlyBracket>(m_tokens[start]));
 }
@@ -205,7 +216,8 @@ std::shared_ptr<ExclamationComponent> TokenHandlers::buildExclamation(
 {
 
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
-    
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+
     return std::make_shared<ExclamationComponent>
     (
         std::dynamic_pointer_cast<Exclamation>(m_tokens[start])
@@ -227,7 +239,8 @@ std::shared_ptr<AndComponent> TokenHandlers::buildAndComponent(
 {
 
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
-    
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+
     return std::make_shared<AndComponent>
     (
         std::dynamic_pointer_cast<AndSymbol>(m_tokens[start])
@@ -248,6 +261,7 @@ std::shared_ptr<EqualComponent> TokenHandlers::buildEqual(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);    
     
     return std::make_shared<EqualComponent>
     (
@@ -269,6 +283,7 @@ std::shared_ptr<SemicolonComponent> TokenHandlers::buildSemicolon(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
     
     return std::make_shared<SemicolonComponent>
     (
@@ -290,6 +305,7 @@ std::shared_ptr<ColonComponent> TokenHandlers::buildColon(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);    
     
     return std::make_shared<ColonComponent>
     (
@@ -311,6 +327,7 @@ std::shared_ptr<PercentageComponent> TokenHandlers::buildPercentage(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);    
     
     return std::make_shared<PercentageComponent>
     (
@@ -332,7 +349,8 @@ std::shared_ptr<CommaComponent> TokenHandlers::buildComma(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
-    
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+
     return std::make_shared<CommaComponent>
     (
         std::dynamic_pointer_cast<Comma>(m_tokens[start])
@@ -353,6 +371,7 @@ std::shared_ptr<HashTagComponent> TokenHandlers::buildHashTag(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);    
     
     return std::make_shared<HashTagComponent>
     (
@@ -384,7 +403,9 @@ std::shared_ptr<StringType> TokenHandlers::buildNestedString(
         characters.push_back(m_tokens[m_index]);
         CharacterUtilities::IncrementIndex(m_tokens, m_index);
     }
-
+    CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+    
     return std::make_shared<StringType>(characters);
 }
 
@@ -424,6 +445,7 @@ std::shared_ptr<CloseParenthesisComponent> TokenHandlers::buildCloseParenthesis(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);    
     
     return std::make_shared<CloseParenthesisComponent>
     (
@@ -445,6 +467,7 @@ std::shared_ptr<OpenParenthesisComponent> TokenHandlers::buildOpenParenthesis(
     size_t &start)
 {
     CharacterUtilities::IncrementIndex(m_tokens, m_index);
+    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);    
     
     return std::make_shared<OpenParenthesisComponent>
     (

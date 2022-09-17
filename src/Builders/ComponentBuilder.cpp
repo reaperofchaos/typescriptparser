@@ -41,44 +41,21 @@ std::shared_ptr<Component>ComponentBuilder::next(){
 
     while (this->m_index < this->m_tokens.size())
     {
+        // CharacterUtilities::DisplayCurrent(this->m_tokens, this->m_index);
         switch(m_tokens[m_index]->type())
         {
             case CharacterType::Number: //Build a number
                 return TokenHandlers::buildNumberComponent(m_tokens, m_index, numbers);
 
             case CharacterType::WhiteSpace:
-                whiteSpaces.push_back(std::make_shared<WhiteSpace>(m_tokens[m_index]->getValue()));
-                CharacterUtilities::IncrementIndex(m_tokens, m_index);
-                
-                while(m_tokens[m_index]->type() == CharacterType::WhiteSpace && this->m_index < this->m_tokens.size())
-                {
-                    whiteSpaces.push_back(std::make_shared<WhiteSpace>(m_tokens[m_index]->getValue()));
-                    CharacterUtilities::IncrementIndex(m_tokens, m_index);
+                if(m_index == start){
+                    return {};
                 }
-                if(this->m_index < this->m_tokens.size())
-                {
-                    switch(m_tokens[m_index]->type())
-                    {
-                        case CharacterType::Symbol:
-                            switch(m_tokens[m_index]->symbolType())
-                            {
-                                case SymbolType::RightSquareBracket:
-                                    return TokenHandlers::buildCloseArray(m_tokens, m_index, start);
-                                case SymbolType::RightCurlyBracket:
-                                    return TokenHandlers::buildCloseObject(m_tokens, m_index, start);
-                                default:
-                                    return TokenHandlers::buildWhiteSpaces(whiteSpaces);
-                            }
-                        default:
-                            return TokenHandlers::buildWhiteSpaces(whiteSpaces);
-                    }
-                }
-                return TokenHandlers::buildWhiteSpaces(whiteSpaces);
 
             case CharacterType::Letter:
             case CharacterType::Uppercase:
             case CharacterType::Lowercase:
-                return TokenHandlers::buildName(m_tokens, m_index, characters);
+                return TokenHandlers::buildName(m_tokens, m_index, start, characters);
 
             case CharacterType::Symbol:
                 switch(m_tokens[m_index]->symbolType())
