@@ -72,6 +72,7 @@ enum class ComponentType
     CloseParameter,
     EndStatementComponent,
     AndComponent,
+    CommentComponent,
 };
 
 class Component

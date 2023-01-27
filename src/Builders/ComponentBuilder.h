@@ -7,6 +7,7 @@
 #include "../Types/CharType.h"
 #include "../Types/Component.h"
 #include "../Handlers/TokenHandlers.h"
+#include "../Handlers/CommentHandlers.h"
 #include "../Utils/CharacterUtilities.h"
 #include "Tokenizer.h"
 

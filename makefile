@@ -48,9 +48,11 @@ $(OBJDIR)/VariableKeyword.o \
 $(OBJDIR)/DataTypeKeyword.o \
 $(OBJDIR)/ContainerKeyword.o \
 $(OBJDIR)/Primitive.o \
+$(OBJDIR)/CommentComponent.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
 $(OBJDIR)/KeywordHandlers.o \
+$(OBJDIR)/CommentHandlers.o \
 $(OBJDIR)/PrimitiveBuilder.o \
 $(OBJDIR)/ElementBuilder.o \
 $(OBJDIR)/Element.o \
@@ -76,9 +78,11 @@ $(OBJDIR)/VariableKeyword.o \
 $(OBJDIR)/DataTypeKeyword.o \
 $(OBJDIR)/ContainerKeyword.o \
 $(OBJDIR)/Primitive.o \
+$(OBJDIR)/CommentComponent.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
 $(OBJDIR)/KeywordHandlers.o \
+$(OBJDIR)/CommentHandlers.o \
 $(OBJDIR)/PrimitiveBuilder.o \
 $(OBJDIR)/ElementBuilder.o \
 $(OBJDIR)/Element.o \
@@ -103,10 +107,12 @@ $(OBJDIR)/LVariableKeyword.o \
 $(OBJDIR)/LDataTypeKeyword.o \
 $(OBJDIR)/LContainerKeyword.o \
 $(OBJDIR)/LPrimitive.o \
+$(OBJDIR)/LCommentComponent.o \
 $(OBJDIR)/LPropHandlers.o \
 $(OBJDIR)/LPrimitiveHandlers.o \
 $(OBJDIR)/LElementHandlers.o \
 $(OBJDIR)/LKeywordHandlers.o \
+$(OBJDIR)/LCommentHandlers.o \
 $(OBJDIR)/LPrimitiveBuilder.o \
 $(OBJDIR)/LElementBuilder.o \
 $(OBJDIR)/LElement.o \
@@ -154,6 +160,12 @@ $(OBJDIR)/ElementHandlers.o:
 
 $(OBJDIR)/PrimitiveHandlers.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/PrimitiveHandlers.cpp -o $(OBJDIR)/PrimitiveHandlers.o
+
+$(OBJDIR)/CommentHandlers.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/CommentHandlers.cpp -o $(OBJDIR)/CommentHandlers.o
+
+$(OBJDIR)/CommentComponent.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/CommentComponent.cpp -o $(OBJDIR)/CommentComponent.o
 
 $(OBJDIR)/Primitive.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Primitive.cpp -o $(OBJDIR)/Primitive.o
@@ -246,8 +258,14 @@ $(OBJDIR)/LKeywordHandlers.o:
 $(OBJDIR)/LPrimitiveHandlers.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/PrimitiveHandlers.cpp -o $(OBJDIR)/LPrimitiveHandlers.o
 
+$(OBJDIR)/LCommentHandlers.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/CommentHandlers.cpp -o $(OBJDIR)/LCommentHandlers.o
+
 $(OBJDIR)/LPrimitive.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Primitive.cpp -o $(OBJDIR)/LPrimitive.o
+
+$(OBJDIR)/LCommentComponent.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/CommentComponent.cpp -o $(OBJDIR)/LCommentComponent.o
 
 $(OBJDIR)/LComponent.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Component.cpp -o $(OBJDIR)/LComponent.o

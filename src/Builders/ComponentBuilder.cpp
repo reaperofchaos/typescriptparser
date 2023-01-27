@@ -78,6 +78,9 @@ std::shared_ptr<Component>ComponentBuilder::next(){
                     case SymbolType::RightCurlyBracket:
                         return TokenHandlers::buildCloseObject(m_tokens, m_index, start);
 
+                    case SymbolType::ForwardSlash:
+                        return CommentHandlers::buildOpenCommentComponent(m_tokens, m_index, start);
+                        
                     case SymbolType::Exclamation:
                         return TokenHandlers::buildExclamation(m_tokens, m_index, start);
                     

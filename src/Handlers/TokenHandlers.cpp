@@ -98,6 +98,7 @@ std::shared_ptr<Component> TokenHandlers::buildName(
     while(m_tokens[m_index]->type() != CharacterType::WhiteSpace &&
     (m_tokens[m_index]->symbolType() != SymbolType::ForwardSlash) &&
     (m_tokens[m_index]->symbolType() != SymbolType::GreaterThanSymbol) &&
+    (m_tokens[m_index]->symbolType() != SymbolType::LeftParenthesis) &&
     (m_tokens[m_index]->symbolType() != SymbolType::RightParenthesis) &&
     (m_tokens[m_index]->symbolType() != SymbolType::EqualSymbol) &&
     (m_tokens[m_index]->symbolType() != SymbolType::Dash) &&
