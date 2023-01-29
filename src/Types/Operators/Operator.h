@@ -80,12 +80,17 @@ class Operator: public Component
         {
             this->value = value->getValue();
         }
-        Operator(std::shared_ptr<Symbol> value1, std::shared_ptr<Symbol> value2)
+        Operator(
+            std::shared_ptr<Symbol> value1,
+            std::shared_ptr<Symbol> value2)
         {
             this->value = value1->getValue() + value2->getValue();
         }
 
-        Operator(std::shared_ptr<Symbol> value1, std::shared_ptr<Symbol> value2, std::shared_ptr<Symbol> value3)
+        Operator(
+            std::shared_ptr<Symbol> value1,
+            std::shared_ptr<Symbol> value2, 
+            std::shared_ptr<Symbol> value3)
         {
             this->value = value1->getValue() + value2->getValue() + value3->getValue();
         }

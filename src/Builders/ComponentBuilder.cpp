@@ -41,9 +41,11 @@ std::shared_ptr<Component>ComponentBuilder::next(){
 
     while (this->m_index < this->m_tokens.size())
     {
+        std::cout << m_tokens[m_index]->inspect() << "\n";
         // CharacterUtilities::DisplayCurrent(this->m_tokens, this->m_index);
         switch(m_tokens[m_index]->type())
         {
+            std::cout << m_tokens[m_index]->inspect() << "\n";
             case CharacterType::Number: //Build a number
                 return TokenHandlers::buildNumberComponent(m_tokens, m_index, numbers);
 
@@ -80,15 +82,6 @@ std::shared_ptr<Component>ComponentBuilder::next(){
 
                     case SymbolType::ForwardSlash:
                         return CommentHandlers::buildOpenCommentComponent(m_tokens, m_index, start);
-                        
-                    case SymbolType::Exclamation:
-                        return TokenHandlers::buildExclamation(m_tokens, m_index, start);
-                    
-                    case SymbolType::EqualSymbol:
-                        return TokenHandlers::buildEqual(m_tokens, m_index, start);
-                    
-                    case SymbolType::AndSymbol:
-                        return TokenHandlers::buildAndComponent(m_tokens, m_index, start);
                     
                     case SymbolType::Comma:
                         return TokenHandlers::buildComma(m_tokens, m_index, start);
@@ -103,19 +96,18 @@ std::shared_ptr<Component>ComponentBuilder::next(){
                         return TokenHandlers::buildCloseParenthesis(m_tokens, m_index, start);
                     
                     case SymbolType::Semicolon:
-                        return TokenHandlers::buildSemicolon(m_tokens, m_index, start);
-
+                        return TokenHandlers::buildSemicolon(m_tokens, m_index, start);                        
+                    
+                    case SymbolType::QuestionMark:
                     case SymbolType::Colon:
-                        return TokenHandlers::buildColon(m_tokens, m_index, start);
-
+                    case SymbolType::Exclamation:                    
+                    case SymbolType::AndSymbol:
+                    case SymbolType::PlusSymbol:
+                    case SymbolType::EqualSymbol:
+                    case SymbolType::AsteriskSymbol:
                     case SymbolType::Percentage:
-                        return TokenHandlers::buildPercentage(m_tokens, m_index, start);
-            
-                        CharacterUtilities::IncrementIndex(m_tokens, m_index);
-                        return std::make_shared<DashComponent>
-                        (
-                            std::dynamic_pointer_cast<Dash>(m_tokens[start])
-                        );
+                    case SymbolType::Dash:
+                        return OperatorHandlers::buildOperator(m_tokens, m_index, start);
 
                     default: 
                         CharacterUtilities::IncrementIndex(m_tokens, m_index);

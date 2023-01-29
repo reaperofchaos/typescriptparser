@@ -19,23 +19,37 @@ std::shared_ptr<Component> CommentHandlers::buildOpenCommentComponent(
             switch(m_tokens[start]->symbolType())
             {
                 case SymbolType::ForwardSlash:
-                    CharacterUtilities::IncrementIndex(m_tokens, m_index);
-                    if(m_tokens[m_index]->type() == CharacterType::Symbol &&
-                    m_tokens[m_index]->symbolType() == SymbolType::AsteriskSymbol)
-                    {
+                    if(m_index + 1 < m_tokens.size() 
+                    && (m_tokens[m_index]->symbolType() == SymbolType::AsteriskSymbol 
+                    || m_tokens[m_index]->symbolType() == SymbolType::ForwardSlash)
+                    ){
                         CharacterUtilities::IncrementIndex(m_tokens, m_index);
-                        CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
-                        return CommentHandlers::buildOpenMultilineComment(std::make_shared<ForwardSlash>(m_tokens[start]->getValue()),
-                        std::make_shared<AsteriskSymbol>(m_tokens[m_index-1]->getValue()) );
+                        if(m_tokens[m_index]->type() == CharacterType::Symbol &&
+                        m_tokens[m_index]->symbolType() == SymbolType::AsteriskSymbol)
+                        {
+                            CharacterUtilities::IncrementIndex(m_tokens, m_index);
+                            CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+                            return CommentHandlers::buildOpenMultilineComment(std::make_shared<ForwardSlash>(m_tokens[start]->getValue()),
+                            std::make_shared<AsteriskSymbol>(m_tokens[m_index-1]->getValue()) );
+                        }
+                        if(m_tokens[m_index]->type() == CharacterType::Symbol &&
+                        m_tokens[m_index]->symbolType() == SymbolType::ForwardSlash)
+                        {
+                            std::cout<< "Two forward slashes found" << "\n"; 
+                            CharacterUtilities::IncrementIndex(m_tokens, m_index);
+                            CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+                            return CommentHandlers::buildOpenSingleLineComment(
+                                std::make_shared<ForwardSlash>(m_tokens[start]->getValue()),
+                                std::make_shared<ForwardSlash>(m_tokens[m_index-1]->getValue()));
+                        }
                     }
-                    if(m_tokens[m_index]->type() == CharacterType::Symbol &&
-                    m_tokens[m_index]->symbolType() == SymbolType::ForwardSlash)
-                    {
-                        CharacterUtilities::IncrementIndex(m_tokens, m_index);
-                        CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
-                        return CommentHandlers::buildOpenSingleLineComment(std::make_shared<ForwardSlash>(m_tokens[start]->getValue()),
-                        std::make_shared<ForwardSlash>(m_tokens[m_index-1]->getValue()));
-                    }
+                    std::cout << "comment handlers - start: " << m_tokens[start]->inspect() << "\n";
+                    std::cout << "comment handlers - m_index: " << m_tokens[m_index]->inspect() << "\n";
+                    std::cout << "comment handlers -  m_index + 1: " << m_tokens[m_index + 1]->inspect() << "\n";
+                    //operator
+                    m_index = start; 
+                    return OperatorHandlers::buildOperator(m_tokens, m_index, start);
+
                 default:
                     return NULL;
 
@@ -57,6 +71,7 @@ std::shared_ptr<Component> CommentHandlers::buildOpenSingleLineComment(
     std::shared_ptr<ForwardSlash> forwardSlash1, 
     std::shared_ptr<ForwardSlash> forwardSlash2)
 {
+    std::cout << "found a single line comment" << "\n";
     return std::make_shared<OpenSingleLineComment>(forwardSlash1, forwardSlash2);
 }
 

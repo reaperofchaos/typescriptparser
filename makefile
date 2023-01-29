@@ -53,6 +53,12 @@ $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
 $(OBJDIR)/KeywordHandlers.o \
 $(OBJDIR)/CommentHandlers.o \
+$(OBJDIR)/OperatorHandlers.o \
+$(OBJDIR)/ArithmeticOperatorHandlers.o \
+$(OBJDIR)/AssignmentOperatorHandlers.o \
+$(OBJDIR)/BitwiseOperatorHandlers.o \
+$(OBJDIR)/ComparisonOperatorHandlers.o \
+$(OBJDIR)/LogicalOperatorHandlers.o \
 $(OBJDIR)/PrimitiveBuilder.o \
 $(OBJDIR)/ElementBuilder.o \
 $(OBJDIR)/Element.o \
@@ -83,6 +89,12 @@ $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
 $(OBJDIR)/KeywordHandlers.o \
 $(OBJDIR)/CommentHandlers.o \
+$(OBJDIR)/OperatorHandlers.o \
+$(OBJDIR)/ArithmeticOperatorHandlers.o \
+$(OBJDIR)/AssignmentOperatorHandlers.o \
+$(OBJDIR)/BitwiseOperatorHandlers.o \
+$(OBJDIR)/ComparisonOperatorHandlers.o \
+$(OBJDIR)/LogicalOperatorHandlers.o \
 $(OBJDIR)/PrimitiveBuilder.o \
 $(OBJDIR)/ElementBuilder.o \
 $(OBJDIR)/Element.o \
@@ -113,6 +125,12 @@ $(OBJDIR)/LPrimitiveHandlers.o \
 $(OBJDIR)/LElementHandlers.o \
 $(OBJDIR)/LKeywordHandlers.o \
 $(OBJDIR)/LCommentHandlers.o \
+$(OBJDIR)/LOperatorHandlers.o \
+$(OBJDIR)/LArithmeticOperatorHandlers.o \
+$(OBJDIR)/LAssignmentOperatorHandlers.o \
+$(OBJDIR)/LBitwiseOperatorHandlers.o \
+$(OBJDIR)/LComparisonOperatorHandlers.o \
+$(OBJDIR)/LLogicalOperatorHandlers.o \
 $(OBJDIR)/LPrimitiveBuilder.o \
 $(OBJDIR)/LElementBuilder.o \
 $(OBJDIR)/LElement.o \
@@ -163,6 +181,24 @@ $(OBJDIR)/PrimitiveHandlers.o:
 
 $(OBJDIR)/CommentHandlers.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/CommentHandlers.cpp -o $(OBJDIR)/CommentHandlers.o
+
+$(OBJDIR)/OperatorHandlers.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/OperatorHandlers.cpp -o $(OBJDIR)/OperatorHandlers.o
+
+$(OBJDIR)/AssignmentOperatorHandlers.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/AssignmentOperatorHandlers.cpp -o $(OBJDIR)/AssignmentOperatorHandlers.o
+
+$(OBJDIR)/ArithmeticOperatorHandlers.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/ArithmeticOperatorHandlers.cpp -o $(OBJDIR)/ArithmeticOperatorHandlers.o
+
+$(OBJDIR)/BitwiseOperatorHandlers.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/BitwiseOperatorHandlers.cpp -o $(OBJDIR)/BitwiseOperatorHandlers.o
+
+$(OBJDIR)/LogicalOperatorHandlers.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/LogicalOperatorHandlers.cpp -o $(OBJDIR)/LogicalOperatorHandlers.o
+
+$(OBJDIR)/ComparisonOperatorHandlers.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/ComparisonOperatorHandlers.cpp -o $(OBJDIR)/ComparisonOperatorHandlers.o
 
 $(OBJDIR)/CommentComponent.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/CommentComponent.cpp -o $(OBJDIR)/CommentComponent.o
@@ -260,6 +296,24 @@ $(OBJDIR)/LPrimitiveHandlers.o:
 
 $(OBJDIR)/LCommentHandlers.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/CommentHandlers.cpp -o $(OBJDIR)/LCommentHandlers.o
+
+$(OBJDIR)/LOperatorHandlers.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/OperatorHandlers.cpp -o $(OBJDIR)/LOperatorHandlers.o
+
+$(OBJDIR)/LAssignmentOperatorHandlers.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/AssignmentOperatorHandlers.cpp -o $(OBJDIR)/LAssignmentOperatorHandlers.o
+
+$(OBJDIR)/LArithmeticOperatorHandlers.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/ArithmeticOperatorHandlers.cpp -o $(OBJDIR)/LArithmeticOperatorHandlers.o
+
+$(OBJDIR)/LBitwiseOperatorHandlers.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/BitwiseOperatorHandlers.cpp -o $(OBJDIR)/LBitwiseOperatorHandlers.o
+
+$(OBJDIR)/LLogicalOperatorHandlers.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/LogicalOperatorHandlers.cpp -o $(OBJDIR)/LLogicalOperatorHandlers.o
+
+$(OBJDIR)/LComparisonOperatorHandlers.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/ComparisonOperatorHandlers.cpp -o $(OBJDIR)/LComparisonOperatorHandlers.o
 
 $(OBJDIR)/LPrimitive.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Primitive.cpp -o $(OBJDIR)/LPrimitive.o

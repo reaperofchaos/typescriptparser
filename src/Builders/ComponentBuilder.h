@@ -8,6 +8,7 @@
 #include "../Types/Component.h"
 #include "../Handlers/TokenHandlers.h"
 #include "../Handlers/CommentHandlers.h"
+#include "../Handlers/OperatorHandlers.h"
 #include "../Utils/CharacterUtilities.h"
 #include "Tokenizer.h"
 

@@ -21,13 +21,19 @@ class BitwiseOperator: public Operator{
             this->value = value->getValue();
         }
 
-        BitwiseOperator(std::shared_ptr<Symbol> value1, std::shared_ptr<Symbol> value2): 
-        Operator(value1, value2)
+        BitwiseOperator(
+            std::shared_ptr<Symbol> value1,
+            std::shared_ptr<Symbol> value2
+            ): Operator(value1, value2)
         {
             this->value = value1->getValue() + value2->getValue();
         }
 
-        BitwiseOperator(std::shared_ptr<Symbol> value1, std::shared_ptr<Symbol> value2, std::shared_ptr<Symbol> value3): Operator(value1, value2, value3)
+        BitwiseOperator(
+            std::shared_ptr<Symbol> value1,
+            std::shared_ptr<Symbol> value2, 
+            std::shared_ptr<Symbol> value3
+            ): Operator(value1, value2, value3)
         {
             this->value = value1->getValue() + value2->getValue() + value3->getValue();
         }
@@ -65,7 +71,11 @@ class BitAndOperator: public BitwiseOperator{
     private:
         std::string value; 
     public:
-        BitAndOperator(std::shared_ptr<AndSymbol> andSymbol): BitwiseOperator(std::dynamic_pointer_cast<Symbol>(andSymbol))
+        
+        BitAndOperator(
+            std::shared_ptr<AndSymbol> andSymbol
+        ): BitwiseOperator(
+            std::dynamic_pointer_cast<Symbol>(andSymbol))
         {
             this->value = andSymbol->getValue();
         }
@@ -79,7 +89,7 @@ class BitOrOperator: public BitwiseOperator{
     private:
         std::string value; 
     public:
-        BitOrOperator(std::shared_ptr<TildeSymbol> pipe): BitwiseOperator(std::dynamic_pointer_cast<Symbol>(pipe))
+        BitOrOperator(std::shared_ptr<PipeSymbol> pipe): BitwiseOperator(std::dynamic_pointer_cast<Symbol>(pipe))
         {
             this->value = pipe->getValue();
         }
@@ -121,7 +131,9 @@ class BitLeftShiftOperator: public BitwiseOperator{
     private:
         std::string value; 
     public:
-        BitLeftShiftOperator(std::shared_ptr<LessThanSymbol> lessThan1, std::shared_ptr<LessThanSymbol> lessThan2): BitwiseOperator(std::dynamic_pointer_cast<Symbol>(lessThan1), std::dynamic_pointer_cast<Symbol>(lessThan2))
+        BitLeftShiftOperator(std::shared_ptr<LessThanSymbol> lessThan1, std::shared_ptr<LessThanSymbol> lessThan2): BitwiseOperator(
+            std::dynamic_pointer_cast<Symbol>(lessThan1),
+            std::dynamic_pointer_cast<Symbol>(lessThan2))
         {
             this->value = lessThan1->getValue() + lessThan2->getValue();
         }
@@ -135,7 +147,9 @@ class BitRightShiftOperator: public BitwiseOperator{
     private:
         std::string value; 
     public:
-        BitRightShiftOperator(std::shared_ptr<GreaterThanSymbol> greaterThan1, std::shared_ptr<GreaterThanSymbol> greaterThan2): BitwiseOperator(std::dynamic_pointer_cast<Symbol>(greaterThan1), std::dynamic_pointer_cast<Symbol>(greaterThan2))
+        BitRightShiftOperator(std::shared_ptr<GreaterThanSymbol> greaterThan1, std::shared_ptr<GreaterThanSymbol> greaterThan2): BitwiseOperator(
+            std::dynamic_pointer_cast<Symbol>(greaterThan1), 
+            std::dynamic_pointer_cast<Symbol>(greaterThan2))
         {
             this->value = greaterThan1->getValue() + greaterThan2->getValue();
         }
@@ -149,11 +163,19 @@ class BitUnsignedRightOperator: public BitwiseOperator{
     private:
         std::string value; 
     public:
-        BitUnsignedRightOperator(std::shared_ptr<GreaterThanSymbol> greaterThan1, std::shared_ptr<GreaterThanSymbol> greaterThan2, std::shared_ptr<GreaterThanSymbol> greaterThan3): BitwiseOperator(std::dynamic_pointer_cast<Symbol>(greaterThan1), std::dynamic_pointer_cast<Symbol>(greaterThan2), std::dynamic_pointer_cast<Symbol>(greaterThan3))
+        BitUnsignedRightOperator(
+            std::shared_ptr<GreaterThanSymbol> greaterThan1,
+            std::shared_ptr<GreaterThanSymbol> greaterThan2, 
+            std::shared_ptr<GreaterThanSymbol> greaterThan3
+            ): BitwiseOperator(
+            std::dynamic_pointer_cast<Symbol>(greaterThan1),
+            std::dynamic_pointer_cast<Symbol>(greaterThan2), 
+            std::dynamic_pointer_cast<Symbol>(greaterThan3)
+            )
         {
             this->value = greaterThan1->getValue() + greaterThan2->getValue();
         }
-        virtual BitwiseOperatorType bitwiseOperatorType(){ return BitwiseOperatorType::BitRightShiftOperator;}
+        virtual BitwiseOperatorType bitwiseOperatorType(){ return BitwiseOperatorType::BitUnsignedRightOperator;}
         virtual std::string getValue(){ return value;}
         virtual std::string getType(){return this->getBitwiseOperatorTypeAsString(this->bitwiseOperatorType());}
         virtual std::string inspect(){ return "Type " + getType() + " - " + getValue();}

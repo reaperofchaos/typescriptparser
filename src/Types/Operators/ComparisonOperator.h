@@ -7,7 +7,7 @@
 class EqualOperator;
 class StrictEqualOperator;
 class NotEqualOperator;
-class StrictEqualOperator;
+class StrictNotEqualOperator;
 class GreaterThanOperator;
 class GreaterThanOrEqualOperator;
 class LessThanOperator;

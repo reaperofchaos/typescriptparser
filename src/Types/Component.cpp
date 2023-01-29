@@ -39,7 +39,7 @@ std::string Component::getTypeAsString(ComponentType type)
         case ComponentType::CloseParenthesisComponent:
             return "Close Parenthesis";
         case ComponentType::OpenParenthesisComponent:
-            return "Close Parenthesis";
+            return "Open Parenthesis";
         case ComponentType::Operator:
             return "Operator";
         case ComponentType::Keyword:
@@ -56,6 +56,8 @@ std::string Component::getTypeAsString(ComponentType type)
             return "Close parameter";
         case ComponentType::EndStatementComponent:
             return "End Statement";
+        case ComponentType::CommentComponent:
+            return "Comment";
         default: 
             return "Unknown";
     }

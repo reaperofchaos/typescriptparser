@@ -6,6 +6,7 @@
 
 #include "../Types/Component.h"
 #include "../Types/CommentComponent.h"
+#include "OperatorHandlers.h"
 #include "../Utils/CharacterUtilities.h"
 /**
  * @brief A set of static functions to generate comment components

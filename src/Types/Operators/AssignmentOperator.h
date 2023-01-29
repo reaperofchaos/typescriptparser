@@ -22,13 +22,19 @@ class AssignmentOperator: public Operator{
             this->value = value->getValue();
         }
 
-        AssignmentOperator(std::shared_ptr<Symbol> value1, std::shared_ptr<Symbol> value2): 
-        Operator(value1, value2)
+        AssignmentOperator(
+            std::shared_ptr<Symbol> value1,
+            std::shared_ptr<Symbol> value2
+            ): Operator(value1, value2)
         {
             this->value = value1->getValue() + value2->getValue();
         }
 
-        AssignmentOperator(std::shared_ptr<Symbol> value1, std::shared_ptr<Symbol> value2, std::shared_ptr<Symbol> value3): Operator(value1, value2, value3)
+        AssignmentOperator(
+            std::shared_ptr<Symbol> value1,
+            std::shared_ptr<Symbol> value2, 
+            std::shared_ptr<Symbol> value3
+            ): Operator(value1, value2, value3)
         {
             this->value = value1->getValue() + value2->getValue() + value3->getValue();
         }
@@ -66,7 +72,10 @@ class EqualAssignmentOperator: public AssignmentOperator{
     private:
         std::string value; 
     public:
-        EqualAssignmentOperator(std::shared_ptr<EqualSymbol> equal): AssignmentOperator(std::dynamic_pointer_cast<Symbol>(equal))
+        EqualAssignmentOperator(
+            std::shared_ptr<EqualSymbol> equal
+            ): AssignmentOperator(
+                std::dynamic_pointer_cast<Symbol>(equal))
         {
             this->value = equal->getValue();
         }
@@ -80,7 +89,12 @@ class IncrementAssignmentOperator: public AssignmentOperator{
     private:
         std::string value; 
     public:
-        IncrementAssignmentOperator(std::shared_ptr<PlusSymbol> plus, std::shared_ptr<EqualSymbol> equal): AssignmentOperator(std::dynamic_pointer_cast<Symbol>(plus), std::dynamic_pointer_cast<Symbol>(equal))
+        IncrementAssignmentOperator(
+            std::shared_ptr<PlusSymbol> plus,
+            std::shared_ptr<EqualSymbol> equal
+            ): AssignmentOperator(
+                std::dynamic_pointer_cast<Symbol>(plus),
+                std::dynamic_pointer_cast<Symbol>(equal))
         {
             this->value = plus->getValue() + equal->getValue();
         }

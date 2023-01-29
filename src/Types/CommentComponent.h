@@ -26,7 +26,7 @@ class CommentComponent: public Component
         virtual std::string getCommentType(){return this->getCommentTypeAsString(this->commentType());}
         virtual std::string inspect() { assert(0); }
         virtual std::string getValue(){ return value;}
-        virtual std::string getType(){return this->getTypeAsString(this->type());}
+        virtual std::string getType(){return this->getCommentType();}
 };
 
 
