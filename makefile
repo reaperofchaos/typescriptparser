@@ -43,6 +43,7 @@ $(OBJDIR)/ArithmeticOperator.o \
 $(OBJDIR)/ComparisonOperator.o \
 $(OBJDIR)/LogicalOperator.o \
 $(OBJDIR)/BitwiseOperator.o \
+$(OBJDIR)/OtherOperator.o \
 $(OBJDIR)/Keyword.o \
 $(OBJDIR)/VariableKeyword.o \
 $(OBJDIR)/DataTypeKeyword.o \
@@ -59,6 +60,7 @@ $(OBJDIR)/AssignmentOperatorHandlers.o \
 $(OBJDIR)/BitwiseOperatorHandlers.o \
 $(OBJDIR)/ComparisonOperatorHandlers.o \
 $(OBJDIR)/LogicalOperatorHandlers.o \
+$(OBJDIR)/OtherOperatorHandlers.o \
 $(OBJDIR)/PrimitiveBuilder.o \
 $(OBJDIR)/ElementBuilder.o \
 $(OBJDIR)/Element.o \
@@ -79,6 +81,7 @@ $(OBJDIR)/ArithmeticOperator.o \
 $(OBJDIR)/ComparisonOperator.o \
 $(OBJDIR)/LogicalOperator.o \
 $(OBJDIR)/BitwiseOperator.o \
+$(OBJDIR)/OtherOperator.o \
 $(OBJDIR)/Keyword.o \
 $(OBJDIR)/VariableKeyword.o \
 $(OBJDIR)/DataTypeKeyword.o \
@@ -95,6 +98,7 @@ $(OBJDIR)/AssignmentOperatorHandlers.o \
 $(OBJDIR)/BitwiseOperatorHandlers.o \
 $(OBJDIR)/ComparisonOperatorHandlers.o \
 $(OBJDIR)/LogicalOperatorHandlers.o \
+$(OBJDIR)/OtherOperatorHandlers.o \
 $(OBJDIR)/PrimitiveBuilder.o \
 $(OBJDIR)/ElementBuilder.o \
 $(OBJDIR)/Element.o \
@@ -114,6 +118,7 @@ $(OBJDIR)/LArithmeticOperator.o \
 $(OBJDIR)/LComparisonOperator.o \
 $(OBJDIR)/LLogicalOperator.o \
 $(OBJDIR)/LBitwiseOperator.o \
+$(OBJDIR)/LOtherOperator.o \
 $(OBJDIR)/LKeyword.o \
 $(OBJDIR)/LVariableKeyword.o \
 $(OBJDIR)/LDataTypeKeyword.o \
@@ -131,6 +136,7 @@ $(OBJDIR)/LAssignmentOperatorHandlers.o \
 $(OBJDIR)/LBitwiseOperatorHandlers.o \
 $(OBJDIR)/LComparisonOperatorHandlers.o \
 $(OBJDIR)/LLogicalOperatorHandlers.o \
+$(OBJDIR)/LOtherOperatorHandlers.o \
 $(OBJDIR)/LPrimitiveBuilder.o \
 $(OBJDIR)/LElementBuilder.o \
 $(OBJDIR)/LElement.o \
@@ -200,6 +206,9 @@ $(OBJDIR)/LogicalOperatorHandlers.o:
 $(OBJDIR)/ComparisonOperatorHandlers.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/ComparisonOperatorHandlers.cpp -o $(OBJDIR)/ComparisonOperatorHandlers.o
 
+$(OBJDIR)/OtherOperatorHandlers.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Handlers/OtherOperatorHandlers.cpp -o $(OBJDIR)/OtherOperatorHandlers.o
+
 $(OBJDIR)/CommentComponent.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/CommentComponent.cpp -o $(OBJDIR)/CommentComponent.o
 
@@ -232,6 +241,9 @@ $(OBJDIR)/LogicalOperator.o:
 
 $(OBJDIR)/BitwiseOperator.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Operators/BitwiseOperator.cpp -o $(OBJDIR)/BitwiseOperator.o
+
+$(OBJDIR)/OtherOperator.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Operators/OtherOperator.cpp -o $(OBJDIR)/OtherOperator.o
 
 $(OBJDIR)/Keyword.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Keywords/Keyword.cpp -o $(OBJDIR)/Keyword.o
@@ -315,6 +327,9 @@ $(OBJDIR)/LLogicalOperatorHandlers.o:
 $(OBJDIR)/LComparisonOperatorHandlers.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/ComparisonOperatorHandlers.cpp -o $(OBJDIR)/LComparisonOperatorHandlers.o
 
+$(OBJDIR)/LOtherOperatorHandlers.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/OtherOperatorHandlers.cpp -o $(OBJDIR)/LOtherOperatorHandlers.o
+
 $(OBJDIR)/LPrimitive.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Primitive.cpp -o $(OBJDIR)/LPrimitive.o
 
@@ -344,6 +359,9 @@ $(OBJDIR)/LLogicalOperator.o:
 
 $(OBJDIR)/LBitwiseOperator.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Operators/BitwiseOperator.cpp -o $(OBJDIR)/LBitwiseOperator.o
+
+$(OBJDIR)/LOtherOperator.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Operators/OtherOperator.cpp -o $(OBJDIR)/LOtherOperator.o
 
 $(OBJDIR)/LKeyword.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Keywords/Keyword.cpp -o $(OBJDIR)/LKeyword.o

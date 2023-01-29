@@ -8,16 +8,10 @@ std::shared_ptr<Component> OperatorHandlers::buildOperator(
     {   
         switch(m_tokens[start]->type())
         {
-            std::cout << "start: " << m_tokens[start]->inspect() << "\n";
-            std::cout << "m_index: " << m_tokens[m_index]->inspect() << "\n";
-            std::cout << "m_index + 1: " << m_tokens[m_index + 1]->inspect() << "\n";
             m_index = start; 
             case CharacterType::Symbol:
                 switch(m_tokens[m_index]->symbolType())
                 {
-                    std::cout << "operator symbol -start: " << m_tokens[start]->inspect() << "\n";
-                    std::cout << "operator symbol - m_index: " << m_tokens[m_index]->inspect() << "\n";
-                    std::cout << "operator symbol - m_index + 1: " << m_tokens[m_index + 1]->inspect() << "\n";
 
                     case SymbolType::EqualSymbol:
                         CharacterUtilities::IncrementIndex(m_tokens, m_index);
@@ -33,10 +27,10 @@ std::shared_ptr<Component> OperatorHandlers::buildOperator(
                                     return ComparisonOperatorHandlers::buildEqualOperator(m_tokens, m_index, start);
                             default:
                                 // =   AssignmentOperatorHandlers -     EqualAssignmentOperator
-                                return AssignmentOperatorHandlers::buildEqualAssignmentOperator(m_tokens, m_index, start);
+                                return AssignmentOperatorHandlers::buildEqualAssignmentOperator(m_tokens, start);
                         }
                         // =   AssignmentOperatorHandlers -     EqualAssignmentOperator
-                        return AssignmentOperatorHandlers::buildEqualAssignmentOperator(m_tokens, m_index, start);
+                        return AssignmentOperatorHandlers::buildEqualAssignmentOperator(m_tokens, start);
                     case SymbolType::PlusSymbol:
                         CharacterUtilities::IncrementIndex(m_tokens, m_index);
                         CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
@@ -90,9 +84,6 @@ std::shared_ptr<Component> OperatorHandlers::buildOperator(
                         // *    ArithmeticOperatorType -    MultiplicationOperator
                         return ArithmeticOperatorHandlers::buildMultiplicationOperator(m_tokens, m_index, start);
                     case SymbolType::ForwardSlash:
-                        std::cout << "start: " << m_tokens[start]->inspect() << "\n";
-                        std::cout << "m_index: " << m_tokens[m_index]->inspect() << "\n";
-                        std::cout << "m_index + 1: " << m_tokens[m_index + 1]->inspect() << "\n";
 
                         if(m_index + 1 < m_tokens.size() 
                             && (m_tokens[m_index + 1]->type() == CharacterType::WhiteSpace 
@@ -199,6 +190,14 @@ std::shared_ptr<Component> OperatorHandlers::buildOperator(
                         // >  ComparisonOperatorType   -   GreaterThanOperator
                         return ComparisonOperatorHandlers::buildGreaterThanOperator(m_tokens, m_index, start);
                     case SymbolType::QuestionMark:
+                        // ?? 
+                        if(m_index + 1 < m_tokens.size() - 1
+                            && m_tokens[m_index+1]->symbolType() == SymbolType::QuestionMark)
+                            {
+                                CharacterUtilities::IncrementIndex(m_tokens, m_index);
+                                CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+                                return OtherOperatorHandlers::buildNullCoalescingOperator(m_tokens, m_index, start);
+                            }
                         // ?  ComparisonOperatorType   -   TernaryOperator
                         return ComparisonOperatorHandlers::buildTernaryOperator(m_tokens, m_index, start);
                     case SymbolType::Colon:
@@ -210,6 +209,24 @@ std::shared_ptr<Component> OperatorHandlers::buildOperator(
                     case SymbolType::CaratSymbol:
                         // ^ BitwiseOperatorType -      BitXOROperator
                         return BitwiseOperatorHandlers::buildBitXOROperator(m_tokens, m_index, start);
+                    case SymbolType::PeriodSymbol:
+                        if(m_index + 1 < m_tokens.size() - 1 
+                            && m_tokens[m_index+1]->symbolType() == SymbolType::PeriodSymbol)
+                            {
+                                CharacterUtilities::IncrementIndex(m_tokens, m_index);
+                                CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+                                if(m_index + 1 < m_tokens.size() - 1 
+                                && m_tokens[m_index+1]->symbolType() == SymbolType::PeriodSymbol)
+                                {
+                                    CharacterUtilities::IncrementIndex(m_tokens, m_index);
+                                    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+                                    // ... OtherOperator - SpreadOperator
+                                    return OtherOperatorHandlers::buildSpreadOperator(m_tokens, m_index, start);
+                                }
+                            }
+                            // . OtherOperator - MethodOperator
+                            return OtherOperatorHandlers::buildMethodOperator(m_tokens, m_index, start);
+                    
                     default: 
                         CharacterUtilities::IncrementIndex(m_tokens, m_index);
                         return NULL;

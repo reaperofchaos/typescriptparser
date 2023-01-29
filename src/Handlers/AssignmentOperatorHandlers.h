@@ -24,7 +24,6 @@ class AssignmentOperatorHandlers
 
         static std::shared_ptr<EqualAssignmentOperator> buildEqualAssignmentOperator(
             std::vector<std::shared_ptr<Character>> &m_tokens, 
-            size_t &m_index, 
             size_t &start);
         
         static std::shared_ptr<DecrementAssignmentOperator> buildDecrementAssignmentOperator(

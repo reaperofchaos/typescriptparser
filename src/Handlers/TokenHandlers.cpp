@@ -101,6 +101,7 @@ std::shared_ptr<Component> TokenHandlers::buildName(
     (m_tokens[m_index]->symbolType() != SymbolType::LeftParenthesis) &&
     (m_tokens[m_index]->symbolType() != SymbolType::RightParenthesis) &&
     (m_tokens[m_index]->symbolType() != SymbolType::EqualSymbol) &&
+    (m_tokens[m_index]->symbolType() != SymbolType::PeriodSymbol) &&
     (m_tokens[m_index]->symbolType() != SymbolType::Dash) &&
     (m_tokens[m_index]->symbolType() != SymbolType::Colon) &&
     (m_tokens[m_index]->symbolType() != SymbolType::Comma) &&

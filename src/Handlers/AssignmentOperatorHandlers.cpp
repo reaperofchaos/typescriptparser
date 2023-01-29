@@ -2,12 +2,8 @@
 
 std::shared_ptr<EqualAssignmentOperator> AssignmentOperatorHandlers::buildEqualAssignmentOperator(
     std::vector<std::shared_ptr<Character>> &m_tokens, 
-    size_t &m_index,
     size_t &start)
 {
-    CharacterUtilities::IncrementIndex(m_tokens, m_index);
-    CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
-
 
     return std::make_shared<EqualAssignmentOperator>(
             std::dynamic_pointer_cast<EqualSymbol>(m_tokens[start]));

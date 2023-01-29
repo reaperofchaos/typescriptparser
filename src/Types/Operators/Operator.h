@@ -8,6 +8,7 @@ enum class OperatorType
     ComparisonOperator, 
     LogicalOperator,
     BitwiseOperator,
+    OtherOperator,
     Unknown,
 };
 
@@ -48,6 +49,14 @@ enum class ComparisonOperatorType
     LessThanOrEqualOperator, // <==
     TernaryOperator, // ?
     TernaryNotOperator, // :
+    Unknown
+};
+
+enum class OtherOperatorType
+{
+    MethodOperator, // .
+    SpreadOperator, // ...
+    NullCoalescingOperator, // ??
     Unknown
 };
 
@@ -108,6 +117,8 @@ class Operator: public Component
                     return "Logical Operator";
                 case OperatorType::BitwiseOperator:
                     return "Bitwise Operator";
+                case OperatorType::OtherOperator:
+                    return "Misc Operator";
                 default: 
                     return "Not an operator";
             }
@@ -119,6 +130,8 @@ class Operator: public Component
         virtual ComparisonOperatorType comparisonOperatorType(){ return ComparisonOperatorType::Unknown;}
         virtual LogicalOperatorType logicalOperatorType(){ return LogicalOperatorType::Unknown;}
         virtual BitwiseOperatorType bitwiseOperatorType(){ return BitwiseOperatorType::Unknown;}
+        virtual OtherOperatorType otherOperatorType(){ return OtherOperatorType::Unknown;}
+
         virtual std::string inspect() { assert(0); }
         virtual std::string getValue(){ return value;}
         virtual std::string getType(){return this->getTypeAsString(this->type());}

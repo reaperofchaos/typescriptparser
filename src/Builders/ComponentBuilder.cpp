@@ -41,11 +41,8 @@ std::shared_ptr<Component>ComponentBuilder::next(){
 
     while (this->m_index < this->m_tokens.size())
     {
-        std::cout << m_tokens[m_index]->inspect() << "\n";
-        // CharacterUtilities::DisplayCurrent(this->m_tokens, this->m_index);
         switch(m_tokens[m_index]->type())
         {
-            std::cout << m_tokens[m_index]->inspect() << "\n";
             case CharacterType::Number: //Build a number
                 return TokenHandlers::buildNumberComponent(m_tokens, m_index, numbers);
 
@@ -98,6 +95,7 @@ std::shared_ptr<Component>ComponentBuilder::next(){
                     case SymbolType::Semicolon:
                         return TokenHandlers::buildSemicolon(m_tokens, m_index, start);                        
                     
+                    case SymbolType::PeriodSymbol:
                     case SymbolType::QuestionMark:
                     case SymbolType::Colon:
                     case SymbolType::Exclamation:                    

@@ -12,6 +12,7 @@
 #include "BitwiseOperatorHandlers.h"
 #include "ComparisonOperatorHandlers.h"
 #include "LogicalOperatorHandlers.h"
+#include "OtherOperatorHandlers.h"
 #include "../Utils/CharacterUtilities.h"
 /**
  * @brief A set of static functions to generate comment components
