@@ -36,6 +36,7 @@ $(OBJDIR)/ComponentBuilder.o \
 $(OBJDIR)/Tokenizer.o \
 $(OBJDIR)/TokenHandlers.o \
 $(OBJDIR)/Symbol.o \
+$(OBJDIR)/WhiteSpace.o \
 $(OBJDIR)/Component.o \
 $(OBJDIR)/Operator.o \
 $(OBJDIR)/AssignmentOperator.o \
@@ -74,6 +75,7 @@ $(OBJDIR)/ComponentBuilder.o \
 $(OBJDIR)/Tokenizer.o \
 $(OBJDIR)/TokenHandlers.o \
 $(OBJDIR)/Symbol.o \
+$(OBJDIR)/WhiteSpace.o \
 $(OBJDIR)/Component.o \
 $(OBJDIR)/Operator.o \
 $(OBJDIR)/AssignmentOperator.o \
@@ -111,6 +113,7 @@ $(OBJDIR)/LComponentBuilder.o \
 $(OBJDIR)/LTokenizer.o \
 $(OBJDIR)/LTokenHandlers.o \
 $(OBJDIR)/LSymbol.o \
+$(OBJDIR)/LWhiteSpace.o \
 $(OBJDIR)/LComponent.o \
 $(OBJDIR)/LOperator.o \
 $(OBJDIR)/LAssignmentOperator.o \
@@ -260,6 +263,9 @@ $(OBJDIR)/ContainerKeyword.o:
 $(OBJDIR)/Symbol.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/Symbol.o
 
+$(OBJDIR)/WhiteSpace.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/WhiteSpace.cpp -o $(OBJDIR)/WhiteSpace.o
+
 $(OBJDIR)/CharType.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/CharType.cpp -o $(OBJDIR)/CharType.o
 
@@ -377,6 +383,9 @@ $(OBJDIR)/LContainerKeyword.o:
 
 $(OBJDIR)/LSymbol.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/LSymbol.o
+
+$(OBJDIR)/LWhiteSpace.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/WhiteSpace.cpp -o $(OBJDIR)/LWhiteSpace.o
 
 $(OBJDIR)/LCharType.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/CharType.cpp -o $(OBJDIR)/LCharType.o

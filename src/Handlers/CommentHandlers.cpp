@@ -36,10 +36,26 @@ std::shared_ptr<Component> CommentHandlers::buildOpenCommentComponent(
                         m_tokens[m_index]->symbolType() == SymbolType::ForwardSlash)
                         {
                             CharacterUtilities::IncrementIndex(m_tokens, m_index);
+                            std::string commentString = ""; 
+                            bool stop = false; 
+                            do{
+                                std::cout << m_tokens[m_index]->inspect() << "\n"; 
+                                commentString = commentString + m_tokens[m_index]->getValue();
+                                CharacterUtilities::IncrementIndex(m_tokens, m_index);
+
+                                if(m_tokens[m_index]->type() == CharacterType::WhiteSpace &&
+                                m_tokens[m_index]->whiteSpaceType() == WhiteSpaceType::Return)
+                                {
+                                    stop = true; 
+                                }
+
+                            }while(!stop);
                             CharacterUtilities::IgnoreWhiteSpace(m_tokens, m_index);
+                            
                             return CommentHandlers::buildOpenSingleLineComment(
                                 std::make_shared<ForwardSlash>(m_tokens[start]->getValue()),
-                                std::make_shared<ForwardSlash>(m_tokens[m_index-1]->getValue()));
+                                std::make_shared<ForwardSlash>(m_tokens[start + 1]->getValue()),
+                                commentString);
                         }
                     }
                     //operator
@@ -65,9 +81,10 @@ std::shared_ptr<Component> CommentHandlers::buildOpenMultilineComment(
 
 std::shared_ptr<Component> CommentHandlers::buildOpenSingleLineComment(
     std::shared_ptr<ForwardSlash> forwardSlash1, 
-    std::shared_ptr<ForwardSlash> forwardSlash2)
+    std::shared_ptr<ForwardSlash> forwardSlash2,
+    std::string commentString)
 {
-    return std::make_shared<OpenSingleLineComment>(forwardSlash1, forwardSlash2);
+    return std::make_shared<OpenSingleLineComment>(forwardSlash1, forwardSlash2, commentString);
 }
 
 std::shared_ptr<Component> CommentHandlers::buildCloseMultilineComment(

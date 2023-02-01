@@ -8,6 +8,7 @@
 #include <memory>
 #include "../Types/CharType.h"
 #include "../Types/Symbol.h"
+#include "../Types/WhiteSpace.h"
 #include "../Utils/TokenizerUtilities.h"
 
 /**

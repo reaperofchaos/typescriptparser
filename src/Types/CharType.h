@@ -6,7 +6,6 @@
 #include <cassert>
 
 class Character;
-class WhiteSpace;
 class Number; 
 class Letter; 
 class Lowercase;
@@ -25,6 +24,15 @@ enum class CharacterType
     Symbol,
     UnicodeCharacter,
     Unknown,
+};
+
+enum class WhiteSpaceType
+{
+    Return,
+    NewLine, 
+    Space, 
+    Tab, 
+    Unknown
 };
 
 enum class SymbolType
@@ -97,39 +105,10 @@ class Character{
 
         virtual CharacterType type(){ return CharacterType::Character;}
         virtual SymbolType symbolType(){ return SymbolType::NotASymbol;}
+        virtual WhiteSpaceType whiteSpaceType(){return WhiteSpaceType::Unknown;}
         virtual std::string inspect() { assert(0); }
         virtual std::string getValue(){ return value;}
         virtual std::string getType(){return this->getTypeAsString(this->type());}
-};
-
-class WhiteSpace: public Character{
-    private:
-        std::string value;
-
-    public:
-        WhiteSpace(std::string str){
-            this->value = str;
-        }
-
-        virtual CharacterType type(){ return CharacterType::WhiteSpace;}
-        std::string getValue(){ return value;}
-        std::string displayValue(){
-            if(this->value[0] == '\n'){
-                return "\\n";
-            }else if(this->value[0] == ' '){
-                return "\\s";
-            }else if(this->value[0] == '\r')
-            {
-                return "\\r";
-            }else if(this->value[0] == '\t')
-            {
-                return "\\t";
-            }else {
-                return "unknown whitespace";
-            }
-        }
-        virtual std::string getType(){return this->getTypeAsString(this->type());}
-        virtual std::string inspect(){ return "Type " + getType() + " - " + displayValue();}
 };
 
 class Number: public Character{

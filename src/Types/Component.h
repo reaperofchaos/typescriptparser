@@ -6,6 +6,7 @@
 #include <cassert>
 #include "CharType.h"
 #include "Symbol.h"
+#include "WhiteSpace.h"
 
 class Component;
 class Name;

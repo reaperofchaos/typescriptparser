@@ -22,7 +22,8 @@ class CommentHandlers
         
         static std::shared_ptr<Component> buildOpenSingleLineComment(
             std::shared_ptr<ForwardSlash> forwardSlash1, 
-            std::shared_ptr<ForwardSlash> forwardSlash2);
+            std::shared_ptr<ForwardSlash> forwardSlash2,
+            std::string commentString);
 
         static std::shared_ptr<Component> buildCloseSingleLineComment(
             std::vector<std::shared_ptr<Character>> &m_tokens, 

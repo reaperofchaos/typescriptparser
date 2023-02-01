@@ -25,12 +25,17 @@ std::shared_ptr<Character>Tokenizer::next()
         switch(c)
         {
             case ' ':
+                TokenizerUtilities::IncrementIndex(m_input, m_index);
+                return std::make_shared<Space>(std::string(view.substr(start, 1)));
             case '\t':
+                TokenizerUtilities::IncrementIndex(m_input, m_index);
+                return std::make_shared<Tab>(std::string(view.substr(start, 1)));            
             case '\n':
+                TokenizerUtilities::IncrementIndex(m_input, m_index);
+                return std::make_shared<NewLine>(std::string(view.substr(start, 1)));
             case '\r':
                 TokenizerUtilities::IncrementIndex(m_input, m_index);
-                return 
-                std::make_shared<WhiteSpace>(std::string(view.substr(start, 1)));
+                return std::make_shared<ReturnLine>(std::string(view.substr(start, 1)));
             case '@':
                 TokenizerUtilities::IncrementIndex(m_input, m_index);
                 return std::make_shared<AtSymbol>(std::string(view.substr(start, 1)));

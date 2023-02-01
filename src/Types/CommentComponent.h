@@ -35,9 +35,13 @@ class OpenSingleLineComment: public CommentComponent
     private:
         std::string value; 
     public:
-        OpenSingleLineComment(std::shared_ptr<ForwardSlash> forwardSlash1, std::shared_ptr<ForwardSlash> forwardSlash2): CommentComponent()
+        OpenSingleLineComment(
+            std::shared_ptr<ForwardSlash> forwardSlash1,
+            std::shared_ptr<ForwardSlash> forwardSlash2,
+            std::string commentString
+        ): CommentComponent()
         {
-            this->value = forwardSlash1->getValue() + forwardSlash2->getValue();
+            this->value = forwardSlash1->getValue() + forwardSlash2->getValue() + commentString;
         }
         virtual CommentType commentType(){ return CommentType::OpenSingleLineComment;}
         virtual std::string getValue(){ return value;}
