@@ -5,7 +5,7 @@
  * tokenizes and analyzes the tokens 
  * and returns an Abstract Syntax Tree
  **/
-void ComponentBuilder::read_str(std::string input) 
+void ComponentBuilder::read_str(std::string input)
 {
     Tokenizer tokenizer = Tokenizer(input);
     tokenizer.tokenize();
@@ -16,7 +16,7 @@ void ComponentBuilder::read_str(std::string input)
     std::vector<std::shared_ptr<Component>>components = reader.getComponents(); 
     std::cout << "Total components " << components.size() << "\n"; 
     reader.displayComponents();
-}
+};
 
 /**
  * @brief A function to iterate through a vector of characters and creates a
@@ -78,7 +78,7 @@ std::shared_ptr<Component>ComponentBuilder::next(){
                         return TokenHandlers::buildCloseObject(m_tokens, m_index, start);
 
                     case SymbolType::ForwardSlash:
-                        return CommentHandlers::buildOpenCommentComponent(m_tokens, m_index, start);
+                        return CommentHandlers::buildCommentComponent(m_tokens, m_index, start);
                     
                     case SymbolType::Comma:
                         return TokenHandlers::buildComma(m_tokens, m_index, start);
@@ -153,6 +153,6 @@ void ComponentBuilder::displayComponents()
 {
     for(auto component : this->m_components)
     {
-        std::cout << component->getType() << " - " << component->getValue() << "\n";
+        std::cout << component->inspect() << "\n";
     }
 }
