@@ -51,6 +51,7 @@ $(OBJDIR)/DataTypeKeyword.o \
 $(OBJDIR)/ContainerKeyword.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/CommentComponent.o \
+$(OBJDIR)/DocTag.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
 $(OBJDIR)/KeywordHandlers.o \
@@ -90,6 +91,7 @@ $(OBJDIR)/DataTypeKeyword.o \
 $(OBJDIR)/ContainerKeyword.o \
 $(OBJDIR)/Primitive.o \
 $(OBJDIR)/CommentComponent.o \
+$(OBJDIR)/DocTag.o \
 $(OBJDIR)/PrimitiveHandlers.o \
 $(OBJDIR)/ElementHandlers.o \
 $(OBJDIR)/KeywordHandlers.o \
@@ -128,6 +130,7 @@ $(OBJDIR)/LDataTypeKeyword.o \
 $(OBJDIR)/LContainerKeyword.o \
 $(OBJDIR)/LPrimitive.o \
 $(OBJDIR)/LCommentComponent.o \
+$(OBJDIR)/DocTag.o \
 $(OBJDIR)/LPropHandlers.o \
 $(OBJDIR)/LPrimitiveHandlers.o \
 $(OBJDIR)/LElementHandlers.o \
@@ -214,6 +217,9 @@ $(OBJDIR)/OtherOperatorHandlers.o:
 
 $(OBJDIR)/CommentComponent.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/CommentComponent.cpp -o $(OBJDIR)/CommentComponent.o
+
+$(OBJDIR)/DocTag.o:
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/DocTag.cpp -o $(OBJDIR)/DocTag.o
 
 $(OBJDIR)/Primitive.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/Primitive.cpp -o $(OBJDIR)/Primitive.o
@@ -341,6 +347,9 @@ $(OBJDIR)/LPrimitive.o:
 
 $(OBJDIR)/LCommentComponent.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/CommentComponent.cpp -o $(OBJDIR)/LCommentComponent.o
+
+$(OBJDIR)/LDocTag.o:
+	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/DocTag.cpp -o $(OBJDIR)/LDocTag.o
 
 $(OBJDIR)/LComponent.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Component.cpp -o $(OBJDIR)/LComponent.o
