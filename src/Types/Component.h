@@ -4,9 +4,9 @@
 #include <iostream>
 #include <memory>
 #include <cassert>
-#include "CharType.h"
-#include "Symbol.h"
-#include "WhiteSpace.h"
+#include "Tokenizer/Types/CharType.h"
+#include "Tokenizer/Types/Symbol.h"
+#include "Tokenizer/Types/WhiteSpace.h"
 
 class Component;
 class Name;

@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <memory>
-#include "../Types/CharType.h"
+#include "Tokenizer/Types/CharType.h"
 
 /**
  * A class used to traverse and display Character vectors

@@ -4,7 +4,7 @@
 #include <vector>
 #include <map>
 
-#include "../Types/Symbol.h"
+#include "Tokenizer/Types/Symbol.h"
 #include "../Types/Component.h"
 #include "../Types/Operators/Operator.h"
 #include "ArithmeticOperatorHandlers.h"

@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <memory>
-#include "../Types/CharType.h"
+#include "Tokenizer/Types/CharType.h"
 #include "../Types/Component.h"
 #include "../Utils/CharacterUtilities.h"
 #include "KeywordHandlers.h"

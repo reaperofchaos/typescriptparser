@@ -19,10 +19,13 @@ LIBFLAGS=-fPIC
 OBJDIR=obj
 #Libraries
 GTEST = /usr/local/lib/libgtest.a
-
+LIBRARYPATH=-L/Users/jacobconner/Desktop/typescriptParser/libs
+TOKENIZER=-ltokenizer
+#Folder with header files
+INCLUDES=-I include
 #target directory
 
-CCFLAGS=$(DEBUG) ${CPPVERSION} $(OPT) $(WARN) -pipe
+CCFLAGS=$(DEBUG)  ${CPPVERSION} $(OPT) $(WARN) -pipe ${INCLUDES}
 
 LIBCCFLAGS=$(DEBUG) ${LIBFLAGS} ${CPPVERSION} $(OPT) $(WARN)
 # linker
@@ -33,10 +36,7 @@ LIBLDFLAGS=-lstdc++ -shared -W1,-soname,${LIBTARGET}
 
 STATICLIBOBJ=$(OBJDIR)/CharType.o \
 $(OBJDIR)/ComponentBuilder.o \
-$(OBJDIR)/Tokenizer.o \
 $(OBJDIR)/TokenHandlers.o \
-$(OBJDIR)/Symbol.o \
-$(OBJDIR)/WhiteSpace.o \
 $(OBJDIR)/Component.o \
 $(OBJDIR)/Operator.o \
 $(OBJDIR)/AssignmentOperator.o \
@@ -71,12 +71,8 @@ $(OBJDIR)/CharacterUtilities.o \
 $(OBJDIR)/TokenizerUtilities.o \
 
 OBJS=$(OBJDIR)/main.o\
-$(OBJDIR)/CharType.o \
 $(OBJDIR)/ComponentBuilder.o \
-$(OBJDIR)/Tokenizer.o \
 $(OBJDIR)/TokenHandlers.o \
-$(OBJDIR)/Symbol.o \
-$(OBJDIR)/WhiteSpace.o \
 $(OBJDIR)/Component.o \
 $(OBJDIR)/Operator.o \
 $(OBJDIR)/AssignmentOperator.o \
@@ -108,14 +104,9 @@ $(OBJDIR)/ElementBuilder.o \
 $(OBJDIR)/Element.o \
 $(OBJDIR)/ComponentUtilities.o \
 $(OBJDIR)/CharacterUtilities.o \
-$(OBJDIR)/TokenizerUtilities.o 
 
 LIBOBJS=$(OBJDIR)/LCharType.o \
 $(OBJDIR)/LComponentBuilder.o \
-$(OBJDIR)/LTokenizer.o \
-$(OBJDIR)/LTokenHandlers.o \
-$(OBJDIR)/LSymbol.o \
-$(OBJDIR)/LWhiteSpace.o \
 $(OBJDIR)/LComponent.o \
 $(OBJDIR)/LOperator.o \
 $(OBJDIR)/LAssignmentOperator.o \
@@ -149,11 +140,10 @@ $(OBJDIR)/LElement.o \
 $(OBJDIR)/LProp.o \
 $(OBJDIR)/LComponentUtilities.o \
 $(OBJDIR)/LCharacterUtilities.o \
-$(OBJDIR)/LTokenizerUtilities.o 
 
 
 all: $(OBJS)
-	$(LD) -o $(TARGET) $(OBJS)  $(LDFLAGS)
+	$(LD) ${LIBRARYPATH} -o $(TARGET) $(OBJS)   $(LDFLAGS) ${TOKENIZER}
 
 lib: $(LIBOBJS)
 	$(LD) $(LIBLDFLAGS) -o $(LIBTARGET) $(LIBOBJS) -lc
@@ -272,17 +262,11 @@ $(OBJDIR)/Symbol.o:
 $(OBJDIR)/WhiteSpace.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/WhiteSpace.cpp -o $(OBJDIR)/WhiteSpace.o
 
-$(OBJDIR)/CharType.o:
-	$(CC) -c $(CCFLAGS) $(SRCDIR)/Types/CharType.cpp -o $(OBJDIR)/CharType.o
-
 $(OBJDIR)/ComponentBuilder.o:
 	$(CC) -c $(CCFLAGS) $(SRCDIR)/Builders/ComponentBuilder.cpp -o $(OBJDIR)/ComponentBuilder.o
 
-$(OBJDIR)/Tokenizer.o:
-	$(CC) -c $(CCFLAGS) $(SRCDIR)/Builders/Tokenizer.cpp -o $(OBJDIR)/Tokenizer.o
-
 $(OBJDIR)/main.o:
-	$(CC) -c $(CCFLAGS) $(SRCDIR)/main.cpp -o $(OBJDIR)/main.o
+	$(CC) -c $(CCFLAGS) $(SRCDIR)/main.cpp -o $(OBJDIR)/main.o 
 
 ##Library variants
 $(OBJDIR)/LProp.o:
@@ -302,9 +286,6 @@ $(OBJDIR)/LCharacterUtilities.o:
 
 $(OBJDIR)/LComponentUtilities.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Utils/ComponentUtilities.cpp -o $(OBJDIR)/LComponentUtilities.o
-
-$(OBJDIR)/LTokenizerUtilities.o:
-	$(CC) -c $(CCFLAGS) $(SRCDIR)/Utils/LTokenizerUtilities.cpp -o $(OBJDIR)/LTokenizerUtilities.o
 
 $(OBJDIR)/LPropHandlers.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Handlers/PropHandlers.cpp -o $(OBJDIR)/LPropHandlers.o
@@ -390,20 +371,8 @@ $(OBJDIR)/LDataTypeKeyword.o:
 $(OBJDIR)/LContainerKeyword.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Keywords/ContainerKeyword.cpp -o $(OBJDIR)/LContainerKeyword.o
 
-$(OBJDIR)/LSymbol.o:
-	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/Symbol.cpp -o $(OBJDIR)/LSymbol.o
-
-$(OBJDIR)/LWhiteSpace.o:
-	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/WhiteSpace.cpp -o $(OBJDIR)/LWhiteSpace.o
-
-$(OBJDIR)/LCharType.o:
-	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Types/CharType.cpp -o $(OBJDIR)/LCharType.o
-
 $(OBJDIR)/LComponentBuilder.o:
 	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/ComponentBuilder.cpp -o $(OBJDIR)/LComponentBuilder.o
 
-$(OBJDIR)/LTokenizer.o:
-	$(CC) -c $(LIBCCFLAGS) $(SRCDIR)/Builders/Tokenizer.cpp -o $(OBJDIR)/LTokenizer.o
- 
 clean:
 	rm -rf $(OBJDIR)/*.o $(TARGET) $(LIBTARGET) $(ARCHIVELIBTARGET)

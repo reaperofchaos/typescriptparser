@@ -4,7 +4,7 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/src/Types/Keywords"
+                "${workspaceFolder}/include/Types/**"
             ],
             "defines": [],
             "macFrameworkPath": [

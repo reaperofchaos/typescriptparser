@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "../Component.h"
-#include "../CharType.h"
+#include "Tokenizer/Types/CharType.h"
 
 enum class KeywordType
 {

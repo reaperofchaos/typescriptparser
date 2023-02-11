@@ -10,7 +10,7 @@
 #include "../Types/Node.h"
 #include "../Handlers/ElementHandlers.h"
 #include "ComponentBuilder.h"
-#include "Tokenizer.h"
+#include "Tokenizer/Tokenizer.h"
 
 /**
  * @brief A class to build elements from components

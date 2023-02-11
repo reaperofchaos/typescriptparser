@@ -2,7 +2,7 @@
 #include <string>
 #include "Keyword.h"
 #include "../Component.h"
-#include "../CharType.h"
+#include "Tokenizer/Types/CharType.h"
 
 class VariableKeyword: public Keyword
 {

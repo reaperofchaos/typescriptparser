@@ -7,7 +7,7 @@
 #include "../Types/Component.h"
 #include "../Types/Primitive.h"
 #include "../Handlers/PrimitiveHandlers.h"
-#include "Tokenizer.h"
+#include "Tokenizer/Tokenizer.h"
 
 /**
  * @brief Class to build primitives from components

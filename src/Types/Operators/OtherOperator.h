@@ -2,8 +2,8 @@
 #include <string>
 #include "Operator.h"
 #include "OtherOperator.h"
-#include "../CharType.h"
-#include "../Symbol.h"
+#include "Tokenizer/Types/CharType.h"
+#include "Tokenizer/Types/Symbol.h"
 
 
 class OtherOperator: public Operator{
